@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+/* Navbar css start */
+nav, .nav-logo, .navul, .navlist, .navlink {
+    background-color: #3876BF;
+}
+nav {
+    position: relative;
+    padding: 10px 150px;
+    color: #FFF;
+    display: flex;
+}
+nav h1 {
+    display: inline-block;
+    font-size: 2rem
+}
+.navul {
+    position: absolute;
+    right: 150px;
+    margin: 1px;
+    padding: 10px;
+}
+.navlist {
+    display: inline;
+}
+.navlink{
+    text-decoration-line: none;
+    color: #EEE;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+.navlink:hover{
+    background-color: #3876BF;
+    color: #EEE;
+}
+
+/* Login page css start */
+.login, h2, form, .login-form, .form-label {
+    color: #4984c7;
+}
+.login{
+    width: 350px;
+    margin: 80px auto auto;
+    border: 1px solid #3876BF;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.login h2{
+    width: fit-content;
+    margin: auto;
+    padding: 5px 5px 20px;
+}
+.login label{
+    float: left;
+    margin: 2px 8px;
+}
+#form-input {
+    width: 100%;
+    padding: 8px;
+    margin: 2px 4px 8px;
+    border: 1px solid #3876BF;
+    border-radius: 5px;
+    outline-color: #45a049;
+}
+.btn {
+    border: 1px solid #aaa;
+    font-size: 16px;
+    color: #eee;
+    background-color: #3876BF;
+    width: 100px ;
+    padding: 8px;
+    margin: 10px 5px;
+    border-radius: 4px;
+    outline-style: none;
+    transition: 0.3s;
+}
+.btn:hover{
+    border: 1px solid #eee;
+    background-color: #45a049;
+    cursor: pointer;
+    color: #f8f5f5;
+}
+
+/* Style for Index Page */
+#indexHeader{
+    text-align: center;
+    padding: 5px;
+}
+.container{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    margin: 10px auto 20px;
+    padding: 10px
+};
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav>
+        <h1 class="nav-logo">Company</h1>
+        <ul class="navul">
+            <li class="navlist">
+                <a class="navlink" href="/index">Home</a>
+            </li>
+            <li class="navlist">
+                <a class="navlink" href="#new">New</a>
+            </li>
+
+            <li class="navlist">
+                <a class="navlink" href="user">LogOut</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="login">
+        <h2>Sign In</h2>
+        <div class="signup login-form">
+            <!-- <form action="" method="post"> -->
+
+                <label id="form-label" for="email" style="font-weight: bold;">Email</label>
+                <input id="form-input" type="email" id="email" name="email" placeholder="Your Email.." required>
+
+                <label id="form-label" for="password" style="font-weight: bold;">Password</label>
+                <input id="form-input" type="text" id="password" name="password" placeholder="Your Password.." required>
+                <div style="color: #fc2727;">
+                    <%= error %>
+                </div>
+                <button class="btn" onclick="signin()"><%= title %></button>
+            <!-- </form> -->
+        </div>
+    </div>
+
+
+    <!-- <script>
+        function signin() {
+            alert('ok')
+        }
+    </script> -->
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error{
+            width: 85%;
+            margin: 20px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="error">
+        <h2 style="color: brown; margin-top: 150px; font-size: 4rem; " class="error-header"><%= error.status %></h2>
+        <h3 style="color: #1480d8; margin-top: 10px; font-size: 2rem; " class="error-message"><%= error.message %></h3>
+    </div>
+</body>
+</html>
