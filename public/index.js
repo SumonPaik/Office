@@ -1,7 +1,6 @@
 
-// // document.getElementById("login").addEventListener("click", (login)=>{
-// //     console.log(login);
-// // });
-// document.getElementById("login").addEventListener("click", function userLogin(login) {
-//     console.log(login);
-// });
+function logout(req, res) {
+  fetch("/logout", {
+    method: "delete"
+  })
+};

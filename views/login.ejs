@@ -7,19 +7,20 @@
            <form action="/" method="post">
                 <div>
                     <label id="form-label" for="email" style="font-weight: bold;">Email</label>
-                    <input id="form-input" type="email" id="email" name="email" value="" placeholder="Your Email.." required>
+                    <input id="form-input" type="email" id="email" name="email" value="<%= formData.email %>" placeholder="Your Email.." required>
                 </div>
                 <div>
                     <label id="form-label" for="password" style="font-weight: bold;">Password</label>
                     <input id="form-input" type="text" id="password" name="password" placeholder="Your Password.." required>
                 </div>                
                 <p style="color: #fc2727; padding: 5px 0;">
-                    <% if (errors && errors.length > 0)  { %>
-                     <%= errors %>
+                    <% if (error && error.length > 0)  { %>
+                     <%= error %>
                     <% } %>
                 </p>
                 <button class="btn" id="login" type="submit">Log In</button>
             </form>
+            <p style="color: blueviolet;">Don't have account? <strong><a href="/user">Signup</a></strong> here</p>
         </div>
     </div>
 

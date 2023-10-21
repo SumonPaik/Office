@@ -9,10 +9,10 @@ const cookieParser = require("cookie-parser");
 
 // Internal Module Imports
 const {notFoundHandler, defaultErrorHandler} = require("./middlewear/errorHandler");
-const {checkLogin} = require("./middlewear/checkLogin");
 const loginRouter = require("./router/loginRouter");
 const userRouter = require("./router/userRouter");
 const indexRouter = require("./router/indexRouter");
+const logoutRouter = require("./router/logoutRouter");
 
 // Require Modules
 const app = express();
@@ -35,7 +35,8 @@ mongoose.connect(process.env.MONGODB_CONNECTION, {useNewUrlparser: true});
 // Router setup
 app.use("/", loginRouter); // Login Router
 app.use("/", userRouter); // User Router
-app.use("/", checkLogin, indexRouter); // Index Router
+app.use("/", indexRouter); // Index Router
+app.use("/", logoutRouter); // Logout Router
 
 
 // 404 - Route not found handler

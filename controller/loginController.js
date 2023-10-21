@@ -3,17 +3,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const createError = require("http-errors");
 const People = require("../modelSchema/userModel");
-const cookie = require("express");
-const cookieParser = require("cookie-parser");
+
 
 // Login Page Render
 function loginPage(req, res, next) {
     try {
-        res.render("login", {
-            title: "Login Page",
-            loggedInUser: null,
-            errors: null
-        })
+        res.render("login");
     } catch (error) {
         next(error)
     }
@@ -39,21 +34,24 @@ async function getLogin(req, res, next) {
                         maxAge: process.env.COOKIE_EXPIRE,
                         httpOnly: true,
                         signed: true
-                    });
-                    res.redirect("/index");
+                    });                    
+                    res.redirect("index");
                 } else {
-                    res.render("login", { 
-                        title: "Login Page",
-                        errors: "Wrong Password"
+                    res.render("login", {
+                        error: "Wrong Username or Password! Try again.", 
+                        formData: {
+                            email: req.body.email
+                        }
                     });
                 }
             });
         } else {
             res.render("login", {
-                email: req.body.email,
-                title: "Login Page",
-                errors: "wrong username"
-            });
+                error: "Wrong Username or Password! Try again.", 
+                formData: {
+                    email: req.body.email
+                    }
+                });
         }
     } catch (error) {       
         next(error)
