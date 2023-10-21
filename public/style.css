@@ -49,10 +49,10 @@ nav h1 {
 }
 .login{
     width: 350px;
-    margin: 80px auto auto;
-    border: 1px solid #3876BF;
+    margin: 50px auto auto;
+    border: 1px solid #8fc3ff;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px 20px;
     text-align: center;
 }
 .login h2{
@@ -66,7 +66,7 @@ nav h1 {
 }
 #form-input {
     width: 100%;
-    padding: 8px;
+    padding: 4px;
     margin: 2px 4px 8px;
     border: 1px solid #3876BF;
     border-radius: 5px;
@@ -78,7 +78,7 @@ nav h1 {
     color: #eee;
     background-color: #3876BF;
     width: 100px ;
-    padding: 8px;
+    padding: 4px;
     margin: 10px 5px;
     border-radius: 4px;
     outline-style: none;

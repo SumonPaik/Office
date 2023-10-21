@@ -2,31 +2,40 @@
 
 // Extarnal module Import
 const express = require("express");
+
 const mongoose = require("mongoose");
-const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
+
 
 // Internal Module Imports
 const {notFoundHandler, defaultErrorHandler} = require("./middlewear/errorHandler");
-
+const {checkLogin} = require("./middlewear/checkLogin");
+const loginRouter = require("./router/loginRouter");
+const userRouter = require("./router/userRouter");
+const indexRouter = require("./router/indexRouter");
 
 // Require Modules
 const app = express();
 require('dotenv').config();
+
+// Set ejs as view engine template
 app.set("view engine", "ejs");
+
+// Request parser
 app.use(express.json());
-app.use(cookieParser(process.env.COOKIE_NAME));
-app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({extended:true}));
+app.use(cookieParser(process.env.COOKIE_NAME));
+
+// Set static folder
+app.use(express.static(__dirname + "/public"));
 
 // Mongo DB Connection Setup
-mongoose.connect("mongodb://127.0.0.1:27017/importDB", {useNewUrlparser: true});
+mongoose.connect(process.env.MONGODB_CONNECTION, {useNewUrlparser: true});
 
 // Router setup
-app.get("/", (req, res)=>{
-    res.send("Welcome!")
-});
-
+app.use("/", loginRouter); // Login Router
+app.use("/", userRouter); // User Router
+app.use("/", checkLogin, indexRouter); // Index Router
 
 
 // 404 - Route not found handler
@@ -36,6 +45,6 @@ app.use(notFoundHandler);
 app.use(defaultErrorHandler);
 
 // End
-app.listen(3000, ()=>{
-    console.log("listening on port: 3000")
+app.listen(process.env.PORT, ()=>{
+    console.log("listening on port: " + process.env.PORT)
 });

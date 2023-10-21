@@ -1,9 +1,9 @@
 <%- include('partial/header') %>
 
 <div class="login">
-    <h2>Sign In</h2>
+    <h2>Resigter</h2>
     <div class="signup login-form">
-        <form action="" method="post">
+        <form action="/user" method="post">
             <label id="form-label" for="username" style="font-weight: bold;">User Name</label>
             <input id="form-input" type="text" id="username" name="username" placeholder="Your Username.." required>
 
@@ -24,11 +24,7 @@
             <label id="form-label" for="password" style="font-weight: bold;">Password</label>
             <input id="form-input" type="text" id="password" name="password" placeholder="Your Password.." required>
 
-            <div>
-                <%= error %>
-            </div>
-
-            <button class="btn" onclick="signup()">Login</button>
+            <button class="btn" type="submit">Signup</button>
         </form>
     </div>
 </div>
