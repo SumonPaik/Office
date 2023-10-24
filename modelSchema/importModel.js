@@ -1,21 +1,49 @@
 //jshint esversion:6
 const mongoose = require("mongoose");
 
-const articleSchema = new mongoose.Schema({
-    title: {
+const importSchema = new mongoose.Schema({
+    jobno: {
         type: String,
         required: true
     },
-    description: {
+    mblno: {
         type: String,
+        required: true
+    },
+    shipper: {
+        type: String,
+        required: true
+    },
+    agent: {
+        type: String,
+        required: true
+    },
+    dateonboard: {
+        type: String,
+        required: true
+    },
+    containertype: {
+        type: String,
+        required: true
+    },
+    origin: {
+        type: String,
+        required: true
+    },
+    portofloading: {
+        type: String,
+        required: true
+    },
+    eta: {
+        type: Date,
         required: true
     },
     creator: {
         type: mongoose.Types.ObjectId,
-        ref: "User"
+        ref: "People"
     }
 }, {
     timestamps: true
 });
 
-module.exports = articleSchema;
+module.exports = new mongoose.model("Import", importSchema);

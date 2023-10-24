@@ -12,6 +12,7 @@ const {notFoundHandler, defaultErrorHandler} = require("./middlewear/errorHandle
 const loginRouter = require("./router/loginRouter");
 const userRouter = require("./router/userRouter");
 const indexRouter = require("./router/indexRouter");
+const importRouter = require("./router/importRouter");
 const logoutRouter = require("./router/logoutRouter");
 
 // Require Modules
@@ -36,6 +37,7 @@ mongoose.connect(process.env.MONGODB_CONNECTION, {useNewUrlparser: true});
 app.use("/", loginRouter); // Login Router
 app.use("/", userRouter); // User Router
 app.use("/", indexRouter); // Index Router
+app.use("/", importRouter); // Import Router
 app.use("/", logoutRouter); // Logout Router
 
 

@@ -8,24 +8,39 @@
         <%= title %>
     </title>
     <link rel="stylesheet" href="/bootstrap.min.css">
-    <link rel="stylesheet" href="/style.css">
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <nav>
-        <h1 class="nav-logo">Company <span style="font-size: 1rem;"><%= loggedInUser.username %></span></h1>
-        <ul class="navul">
-            <% if (loggedInUser && loggedInUser.userId) { %>
-                <li class="navlist">
-                    <a class="navlink" href="/index">Home</a>
-                </li>
-                <li class="navlist">
-                    <a class="navlink" href="#new">New</a>
-                </li>
-                <li class="navlist">
-                    <a role="button" class="navlink" onclick="logout()" href="/">Logout</a>
-                </li>
-                <% } %>
-        </ul>
+        <div>
+            <h1>WBSL-IMPORT</h1>
+        </div>
+        <div>
+            <ul class="navul">
+                <% if (loggedInUser && loggedInUser.userId) { %>
+                    <li class="navlist">
+                        <a class="navlink" href="/index">Home</a>
+                    </li>
+                    <li class="navlist">
+                        <a class="navlink" href="/import">New</a>
+                    </li>
+                    <li class="navlist">
+                        <a class="navlink" href="/logout">Logout</a>
+                    </li>
+                    <li class="navlist">
+                        <a  
+                            style= "border: 2px solid #FFF;
+                                    padding: 2px 5px;
+                                    border-radius: 5px; 
+                                    font-size: 1.1rem;
+
+                                     ">
+                            <%= loggedInUser.username %>
+                        </a>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
     </nav>
+

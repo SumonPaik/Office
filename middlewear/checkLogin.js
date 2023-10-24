@@ -6,26 +6,63 @@ const createError = require("http-errors");
 // Function for check User Authentication
 const checkLogin = async function (req, res, next) {
     try {
-        const cookie = req.signedCookies;
+        const cookie = req.signedCookies ? req.signedCookies : null
+        
         if (cookie) {
             const decoded = jwt.verify(cookie[process.env.COOKIE_NAME], process.env.JWT_SECRET);
-            if (decoded) {
-                const { username, mobile, userId } = decoded;
+            if (decoded) { 
+                const userObject = {
+                    userId: decoded.userId,
+                    username: decoded.username,
+                    email: decoded.email,
+                    role: decoded.role
+                };
+                
+                // Regenarate jwt and  set cookie
+                const token = jwt.sign(userObject, process.env.JWT_SECRET, {
+                    expiresIn: process.env.JWT_EXPIRE
+                });
+                // Reset cookie
+                await res.cookie(process.env.COOKIE_NAME, token, {
+                    maxAge: process.env.COOKIE_EXPIRE,
+                    httpOnly: true,
+                    signed: true
+                }); 
+
+                const {userId, username, email, role} = decoded;
                 req.username = username;
-                req.mobile = mobile;
+                req.email = email;
                 req.userId = userId;
-                res.locals.loggedInUser = decoded
+                req.role = role;
+                res.locals.loggedInUser = userObject;
                 next();
             } else {
-                next(createError(401, "Your session has expired! Log in again."));                
+                next(createError(401, "Unauthorized Attemp! Provide valid user information"));                
             }
         } else {
             res.redirect("/");
         }
     } catch (error) {
-        next(createError(401, "You must login first!"))        
+        next(createError(401, "Log in first!"))       
+    }
+};
+
+// Signin page handler
+
+function signinPageHandler(req, res, next) {
+    try {
+        const cookie = req.signedCookies[process.env.COOKIE_NAME];
+        if (cookie) {
+            console.log("Cookie Present!");
+            res.redirect("index");
+        } else {
+            next()
+        }
+    } catch (error) {
+        next(error)
     }
 };
 
 
-module.exports = { checkLogin };
+
+module.exports = { checkLogin, signinPageHandler };

@@ -11,24 +11,17 @@
             <th class="table-data">ETA</th>
             <th class="table-data">OPTION</th>
         </thead>
-        <tbody>
-            <td>0001</td>
-            <td>SHARK LIMITED</td>
-            <td>WBSL0123456789</td>
-            <td>MBL9876543210</td>
-            <td>10-JAN-2023</td>
-            <td>25-DEC-2023</td>
-            <td><button class="" type="submit" value="view">DETAILS</button></td>
-        </tbody>
-        <tbody>
-            <td>0002</td>
-            <td>IRIS ENTERPRISE</td>
-            <td>WBSL01234567810</td>
-            <td>MBL9876543211</td>
-            <td>19-MAR-2023</td>
-            <td>21-JAN-2024</td>
-            <td><button class="" type="submit" value="view">DETAILS</button></td>
-        </tbody>
+        <% importList.forEach(data => { %>
+            <tbody>
+                <td><%= data.jobno %></td>
+                <td><%= data.mblno %></td>
+                <td><%= data.shipper %></td>
+                <td><%= data.agent %></td>
+                <td><%= data.dateonboard %></td>
+                <td><%= moment(data.eta).format("DD-MMM-YY") %></td>
+                <td><a href="/index/<%= data._id %>">VIEW</a></td>
+            </tbody>
+        <% }) %>
     </table>
 </div>
 

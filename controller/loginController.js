@@ -25,7 +25,8 @@ async function getLogin(req, res, next) {
                     const userObject = {
                         userId: user._id,
                         username: user.username,
-                        email: user.email 
+                        email: user.email,
+                        role: user.role
                     };
                     const token = jwt.sign(userObject, process.env.JWT_SECRET, {
                         expiresIn: process.env.JWT_EXPIRE
