@@ -3,9 +3,21 @@
     <div class="container">
         <form action="/import" method="post">
             <div id="createImport" >
-                <div class="mb-3">
+                <div class="mb-3" style="flex-basis: 20%;">
                     <label class="form-label" for="jobno">Job Number</label>
                     <input class="form-control" type="text" name="jobno" placeholder="Enter job no." required>
+                </div>
+                <div class="mb-3" style="flex-basis: 20%;">
+                    <label class="form-label" for="dateonboard">Date on Board</label>
+                    <input class="form-control" type="date" name="dateonboard" placeholder="Date on Board" required>
+                </div>
+                <div class="mb-3" style="flex-basis: 20%;">
+                    <label class="form-label" for="eta">ETA Date</label>
+                    <input class="form-control" type="date" name="eta" placeholder="Arrival date" required>
+                </div> 
+                <div class="mb-3" style="flex-basis: 20%;">
+                    <label class="form-label" for="containertype">Container Type</label>
+                    <input class="form-control" type="text" name="containertype" placeholder="Container Type" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="mblno">Master BL</label>
@@ -18,15 +30,7 @@
                 <div class="mb-3">
                     <label class="form-label" for="agent">Agent Name</label>
                     <input class="form-control" type="text" name="agent" placeholder="Enter agnet name" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="dateonboard">Date on Board</label>
-                    <input class="form-control" type="date" name="dateonboard" placeholder="Date on Board" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="containertype">Container Type</label>
-                    <input class="form-control" type="text" name="containertype" placeholder="Container Type" required>
-                </div>
+                </div>               
                 <div class="mb-3">
                     <label class="form-label" for="origin">Origin Country</label>
                     <input class="form-control" type="text" name="origin" placeholder="Enter Country" required>
@@ -36,12 +40,8 @@
                     <input class="form-control" type="text" name="portofloading" placeholder="Enter loading port"
                         required>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="eta">ETA Date</label>
-                    <input class="form-control" type="date" name="eta" placeholder="Arrival date" required>
-                </div> 
             </div>               
-            <button style="float: right; margin-right: 20px;" class="btn btn-success" type="submit">Save</button>
+            <button style="margin-left: 20px;" class="btn btn-success" type="submit">Save</button>
         </form>
   </div>
 

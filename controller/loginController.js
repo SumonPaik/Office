@@ -3,9 +3,10 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const createError = require("http-errors");
 const People = require("../modelSchema/userModel");
+const Import = require("../modelSchema/importModel");
+const moment = require("moment");
 
-
-// Login Page Render
+// Login Page rendering function
 function loginPage(req, res, next) {
     try {
         res.render("login");
@@ -14,7 +15,8 @@ function loginPage(req, res, next) {
     }
 };
 
-// User Login
+
+// User Login function
 async function getLogin(req, res, next) {
     try {
         const user = await People.findOne({ email: req.body.email });       
@@ -59,4 +61,25 @@ async function getLogin(req, res, next) {
     };
 };
 
-module.exports = {loginPage, getLogin};
+
+// Index page render function
+async function indexPage(req, res, next) {
+    try {
+        await Import.find({}).populate("creator", "-password").then((importList)=>{
+            res.render("index", {
+                importList: importList,
+                moment: moment
+            })
+        });        
+    } catch (error) {
+        next(error)
+    }
+};
+
+
+// Export modules
+module.exports = {
+    loginPage,
+    getLogin,
+    indexPage
+};

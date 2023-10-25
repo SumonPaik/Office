@@ -11,7 +11,6 @@ const cookieParser = require("cookie-parser");
 const {notFoundHandler, defaultErrorHandler} = require("./middlewear/errorHandler");
 const loginRouter = require("./router/loginRouter");
 const userRouter = require("./router/userRouter");
-const indexRouter = require("./router/indexRouter");
 const importRouter = require("./router/importRouter");
 const logoutRouter = require("./router/logoutRouter");
 
@@ -36,7 +35,6 @@ mongoose.connect(process.env.MONGODB_CONNECTION, {useNewUrlparser: true});
 // Router setup
 app.use("/", loginRouter); // Login Router
 app.use("/", userRouter); // User Router
-app.use("/", indexRouter); // Index Router
 app.use("/", importRouter); // Import Router
 app.use("/", logoutRouter); // Logout Router
 

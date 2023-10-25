@@ -17,9 +17,9 @@
                 <td><%= data.mblno %></td>
                 <td><%= data.shipper %></td>
                 <td><%= data.agent %></td>
-                <td><%= data.dateonboard %></td>
-                <td><%= moment(data.eta).format("DD-MMM-YY") %></td>
-                <td><a href="/index/<%= data._id %>">VIEW</a></td>
+                <td><%= new Date(data.dateonboard).toDateString() %></td>
+                <td><%= new Date(data.eta).toDateString() %></td>
+                <td><a class="btn" href="/import/<%= data._id %>">VIEW</a></td>
             </tbody>
         <% }) %>
     </table>

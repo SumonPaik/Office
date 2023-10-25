@@ -1,96 +1,95 @@
 <%- include('partial/header') %>
 
-<div class="container">
-    
-    <h5>Basic Information</h5>
-    <section id="common" style="display: flex; border: 1px solid #ccc; justify-content: space-evenly; margin-bottom: 30px;">
-        <div id="basic" class="basic" style="border: 1px solid red; width: 33%;">
-            
-            <table>
-                <tr>
-                    <th>JOB NO.: </th>
-                    <td><%= imports.jobno %></td>
-                </tr>
-                <tr>
-                    <th>MBL No. : </th>
-                    <td><%= imports.mblno %></td>
-                </tr>
-                <tr>
-                    <th>Shipper : </th>
-                    <td><%= imports.shipper %></td>
-                </tr>
-                <tr>
-                    <th>Agent : </th>
-                    <td><%= imports.agent %></td>
-                </tr>
+    <div class="container">
+        <a style="float: right;" class="btn btn-primary" href="/index">← Back</a>
+        <h5 style="padding: 5px; background-color: #CCC;">Import Common Information</h5>
+        <div id="basicData">
+            <div class="import-item">
+                <p class="item-header">Job No.</p>
+                <p class="item-data">
+                    <%= imports.jobno %>
+                </p>
+            </div>
+            <div class="import-item">
+                
+                <p class="item-header">Master BL No.</p>
+                <p class="item-data">
+                    <%= imports.mblno %>
+                </p>
+            </div>
+            <div class="import-item">
+                <p class="item-header">Date on Board</p>
+                <p class="item-data">
+                    <%= new Date(imports.dateonboard).toDateString() %>
+                </p>
+            </div>
+            <div class="import-item">
+                <p class="item-header">E.T.A</p>
+                <p class="item-data">
+                    <%= new Date(imports.eta).toDateString() %>
+                </p>
+            </div>
+            <div class="import-item">
+                <p class="item-header">Container Type</p>
+                <p class="item-data">
+                    <%= imports.containertype %>
+                </p>
+            </div>
+            <div class="import-item">
+                <p class="item-header">Shipper Name</p>
+                <p class="item-data">
+                    <%= imports.shipper %>
+                </p>
+            </div>
+            <div class="import-item">
+                <p class="item-header">Country of Origin</p>
+                <p class="item-data">
+                    <%= imports.origin %>
+                </p>
+            </div>
+            <div class="import-item">
+                <p class="item-header">Port of Loading</p>
+                <p class="item-data">
+                    <%= imports.portofloading %>
+                </p>
+            </div>
+            <!-- <div class="import-item">
+                <p class="item-header">Created By</p>
+                <p class="item-data">
+                    <%#= imports.creator.username %>
+                </p>
+            </div> -->
+        </div>
+        <!-- Basic info end here -->
+        <div id="housebl-info">
+            <h5 style="padding: 5px; background-color: #CCC;">House BL Information</h5>
+            <table class="table table-hover" style="width: 100%; ">
+                <thead class="table-light">
+                    <tr>
+                        <th>House BL</th>
+                        <th>Consignee</th>
+                        <th>Container No.</th>
+                        <th>Con. Size</th>
+                        <th>Cont. Seal No.</th>
+                        <th>Invoice</th>
+                    </tr>
+                </thead>
+                <% hbls.forEach(hbl => { %>
+                    <tbody>
+                        <tr>
+                            <td><%= hbl.hblno %></td>
+                            <td><%= hbl.consignee %></td>
+                            <td><%= hbl.containerno %></td>
+                            <td><%= hbl.containerno %></td>
+                            <td><%= hbl.containerseal %></td>
+                            <td><%= hbl.quantity %></td>
+                        </tr>
+                    </tbody>
+                <% }) %>
             </table>
         </div>
-        <div id="basic-2" class="basic-2" style="border: 1px solid rgb(23, 105, 12); width: 33%;">
-            
-            <table>
-                <tr>
-                    <th>Date of Bord : </th>
-                    <td><%= imports.dateonboard %></td>
-                </tr>
-                <tr>
-                    <th>ETA : </th>
-                    <td><%= imports.eta %></td>
-                </tr>
-                <tr>
-                    <th>Origin : </th>
-                    <td><%= imports.origin %></td>
-                </tr>
-                <tr>
-                    <th>Con. Type : </th>
-                    <td><%= imports.containertype %></td>
-                </tr>
-            </table>
-        </div>
-        <div id="basic-2" class="basic-2" style="border: 1px solid rgb(12, 60, 105); width: 33%;">            
-            <table>
-                <tr>
-                    <th>Loading Port : </th>
-                    <td><%= imports.portofloading %></td>
-                </tr>
-                <tr>
-                    <th>Job Assign Date : </th>
-                    <td><%= moment(imports.createdAt).format("DD MMM, YY")  %></td>
-                </tr>
-                <tr>
-                    <th>Creator : </th>
-                    <td><%= imports.origin %></td>
-                </tr>
-                <tr>
-                    <th>Jon No. : </th>
-                    <td><%= imports.containertype %></td>
-                </tr>
-            </table>
-        </div>
-    </section>
 
-    <h5>House BL Information</h5>
-    <section id="common" style="display: flex; border: 1px solid #ccc; justify-content: space-evenly;">
-        <div id="basic" class="basic" style="border: 1px solid red; width: 100%;">
-    
-            <table style="width: 100%;">
-                <tr>
-                    <th>HBL No. : </th>
-                    <th>Consignee : </th>
-                    <th>Container No. : </th>
-                    <th>Container Seal : </th>
-                    <th>Carton/Quantity: </th>
-                </tr>
-                <tr>
-                    <td>HBL 1</td>
-                    <td>SHARK LTD</td>
-                    <td>MEDU0123456</td>
-                    <td>MSCABSCD</td>
-                    <td>165CTN</td>
 
-                </tr>                
-            </table>
-        </div>
-    </section>
-</div>
+    </div>
 
-<%- include('partial/footer') %>
+    <%- include('partial/footer') %>

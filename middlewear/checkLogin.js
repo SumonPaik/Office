@@ -53,7 +53,6 @@ function signinPageHandler(req, res, next) {
     try {
         const cookie = req.signedCookies[process.env.COOKIE_NAME];
         if (cookie) {
-            console.log("Cookie Present!");
             res.redirect("index");
         } else {
             next()

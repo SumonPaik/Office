@@ -9,7 +9,7 @@ body {
 
 /* Navbar css start */
 nav, .nav-logo, .navul, .navlist, .navlink {
-    background-color: #3876BF;
+    background-color: #3f7eb1;
 }
 nav {
     position: relative;
@@ -46,18 +46,49 @@ nav h1 {
 /* Start css for Create import form */
 #createImport {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     padding: 5px;
+    justify-content: space-between;
 }
+
 .mb-3{
-    width: 33%;
+    width: 300px;
+    margin: 10px;
+    flex-basis: 20%;
 }
+
 .form-label{
     padding-left: 10px;
     font-weight: bold;
+    margin-bottom: 2px;
 }
 
+/* View Import page css */
+#basicData{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.import-item {
+    /* border: 1px solid darkorchid; */
+    flex-basis: 22%;
+    margin-bottom: 20px;
+
+}
+.item-header, .item-data{
+    margin: 0 ;
+    padding: 2px;
+}
+.item-header {
+    font-size: 14px;
+   font-style: italic;
+}
+
+.item-data{
+    padding-left: 8px ;
+    font-weight: bold;
+}
 
 
 /* Login page css start */
@@ -92,19 +123,19 @@ nav h1 {
 }
 .btn {
     border: 1px solid #aaa;
-    font-size: 16px;
+    font-size: 14px;
     color: #eee;
-    background-color: #3876BF;
-    width: 100px ;
-    padding: 4px;
-    margin: 10px 5px;
+    background-color: #339454;
+    min-width: 80px ;
+    padding: 2px;
+    margin: 0 5px;
     border-radius: 4px;
     outline-style: none;
     transition: 0.3s;
 }
 .btn:hover{
     border: 1px solid #eee;
-    background-color: #45a049;
+    background-color: #4a79b6;
     cursor: pointer;
     color: #f8f5f5;
 }
@@ -117,7 +148,9 @@ nav h1 {
 .container{
     font-family: Arial, Helvetica, sans-serif;
     width: 80%;
-    margin: 10px auto 20px;
-    padding: 10px
+    margin: 0 auto 20px;
+    padding: 10px 0 10px;
+    background-color: #FFF
+    
 };
 

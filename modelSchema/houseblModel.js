@@ -12,6 +12,9 @@ const houseblSchema = new mongoose.Schema({
     },
     containerno: {
         type: String
+    },    
+    containersize: {
+        type: String
     },
     containerseal: {
         type: String
