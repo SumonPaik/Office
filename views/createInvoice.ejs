@@ -1,0 +1,53 @@
+<%- include('partial/header') %>
+
+<div class="container">
+    <form action="" method="post" style="padding: 10px;">
+        <div style="margin: 5px;">
+            <label style="width: 150px;" for="invoiceno">Invoice No. : </label>
+            <input style="padding: 2px 8px; border: none;" type="text" name="invoiceno" value="<%= housebl.mblno.jobno %>">
+        </div>
+        <div style="margin: 5px;">
+            <label style="width: 150px;" for="invoiceto">Invoice To : </label>
+            <input style="padding: 2px 8px; border: none;" type="text" name="invoiceto" value="<%= housebl.consignee %>">
+        </div>
+        <div style="margin: 5px;">
+            <label style="width: 150px;" for="hblno">House BL No. : </label>
+            <input style="padding: 2px 8px; border: none;" type="text" name="hblno" value="<%= housebl.hblno %>">
+        </div>
+        <div style="margin: 5px;">
+            <label style="width: 150px;" for="conno">Container No. : </label>
+            <input style="padding: 2px 8px; border: none;" type="text" name="conno" value="<%= housebl.containerno %>">
+        </div>
+        <div style="margin: 5px;">
+            <label style="width: 150px;" for="origin">Country of Origin : </label>
+            <input style="padding: 2px 8px; border: none;" type="text" name="origin" value="<%= housebl.mblno.origin %>">
+        </div>
+        <div style="margin: 5px;">
+            <label style="width: 150px;" for="invoiceamount">Invoice Amount : </label>
+            <input style="padding: 2px 8px;" type="number" name="invoiceamount" placeholder="Enter invoice amount">
+        </div>
+        
+        <!-- <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Descriptions</th>
+                        <th scope="col">Amount USD</th>
+                        <th scope="col">Currency Rate</th>
+                        <th scope="col">Amount in BDT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+    </form>
+</div>
+
+<%- include('partial/footer') %>

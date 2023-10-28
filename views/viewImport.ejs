@@ -1,8 +1,8 @@
-<%- include('partial/header') %>
 
+<%- include('partial/header') %>
     <div class="container">
-        <a style="float: right;" class="btn btn-primary" href="/index">← Back</a>
-        <h5 style="padding: 5px; background-color: #CCC;">Import Common Information</h5>
+        <h5 style="padding: 5px; background-color: #CCC;">Import Details  
+            <span><a class="btn btn-info" href="/index">← Back to Index</a></span></h5>
         <div id="basicData">
             <div class="import-item">
                 <p class="item-header">Job No.</p>
@@ -11,7 +11,6 @@
                 </p>
             </div>
             <div class="import-item">
-                
                 <p class="item-header">Master BL No.</p>
                 <p class="item-data">
                     <%= imports.mblno %>
@@ -53,16 +52,15 @@
                     <%= imports.portofloading %>
                 </p>
             </div>
-            <!-- <div class="import-item">
-                <p class="item-header">Created By</p>
-                <p class="item-data">
-                    <%#= imports.creator.username %>
-                </p>
-            </div> -->
+            
         </div>
         <!-- Basic info end here -->
+        <div class="import-item">
+                <a class="btn btn-info" href="import/<%= imports._id %>">Add New HBL</a>                
+            </div>
+
         <div id="housebl-info">
-            <h5 style="padding: 5px; background-color: #CCC;">House BL Information</h5>
+            <!-- <h5 style="padding: 5px; background-color: #CCC;">House BL Information</h5> -->
             <table class="table table-hover" style="width: 100%; ">
                 <thead class="table-light">
                     <tr>
@@ -71,25 +69,77 @@
                         <th>Container No.</th>
                         <th>Con. Size</th>
                         <th>Cont. Seal No.</th>
-                        <th>Invoice</th>
+                        <th>Quantity</th>
+                        <th>Create Invoice</th>
                     </tr>
                 </thead>
-                <% hbls.forEach(hbl => { %>
+                <% hbls.forEach(hbl=> { %>
                     <tbody>
                         <tr>
-                            <td><%= hbl.hblno %></td>
-                            <td><%= hbl.consignee %></td>
-                            <td><%= hbl.containerno %></td>
-                            <td><%= hbl.containerno %></td>
-                            <td><%= hbl.containerseal %></td>
-                            <td><%= hbl.quantity %></td>
+                            <td>
+                                <%= hbl.hblno %>
+                            </td>
+                            <td>
+                                <%= hbl.consignee %>
+                            </td>
+                            <td>
+                                <%= hbl.containerno %>
+                            </td>
+                            <td>
+                                <%= hbl.containersize %>
+                            </td>
+                            <td>
+                                <%= hbl.containerseal %>
+                            </td>
+                            <td>
+                                <%= hbl.quantity %>
+                            </td>
+                            <td>
+                                <a class="btn btn-info" href="/invoice/<%= hbl._id %>">Create Inv</a>
+                            </td>
                         </tr>
                     </tbody>
-                <% }) %>
+                    <% }) %>
             </table>
+            <!-- <div class="invoice-info" style="display: flex;">
+                <div style="border: 1px solid blue;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width: 120px;">HBL No.</th>
+                                <th style="width: 120px;">Invoice To</th>
+                                <th style="width: 120px;">Amount</th>
+                                <th style="width: 120px;">Total Received</th>
+                                <th style="width: 120px;">Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 120px;">bl no</td>
+                                <td style="width: 120px;">invoice to</td>
+                                <td style="width: 120px;">amount</td>
+                                <td style="width: 120px;">received amount</td>
+                                <td style="width: 120px;"><a href="#">View Invoice</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="border: 1px solid red;">
+                    <table class="table">
+                        <tr>
+                            <th>Credit Note</th>
+                            <td>Amount</td>
+                        </tr>
+                    </table>
+                </div>
+            </div> -->
         </div>
-
-
     </div>
-
+    <!-- <script>
+        function newhbl() {
+            const button = document.getElementById("housebl");
+            console.log(button.innerHTML);
+        }
+    </script> -->
+        
     <%- include('partial/footer') %>

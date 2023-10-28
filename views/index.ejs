@@ -1,15 +1,15 @@
 <%- include('partial/header') %>
 
 <div class="container">
-    <table class="table " id="import">
+    <table class="table table-hover" id="import">
         <thead class="table-primary">
             <th class="table-data">JOB NO</th>
-            <th class="table-data">CONSIGNEE</th>
-            <th class="table-data">HOUSE BL</th>
             <th class="table-data">MASTER BL</th>
-            <th class="table-data">ON BOARD</th>
+            <th class="table-data">SHIPPER</th>
+            <th class="table-data">AGENT</th>
+            <th class="table-data">DATE ON BOARD</th>
             <th class="table-data">ETA</th>
-            <th class="table-data">OPTION</th>
+            <th class="table-data">Details</th>
         </thead>
         <% importList.forEach(data => { %>
             <tbody>
@@ -19,7 +19,7 @@
                 <td><%= data.agent %></td>
                 <td><%= new Date(data.dateonboard).toDateString() %></td>
                 <td><%= new Date(data.eta).toDateString() %></td>
-                <td><a class="btn" href="/import/<%= data._id %>">VIEW</a></td>
+                <td><a class="btn btn-info" href="/<%= data._id %>">VIEW</a></td>
             </tbody>
         <% }) %>
     </table>

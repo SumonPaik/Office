@@ -13,6 +13,7 @@ const loginRouter = require("./router/loginRouter");
 const userRouter = require("./router/userRouter");
 const importRouter = require("./router/importRouter");
 const logoutRouter = require("./router/logoutRouter");
+const invoiceRouter = require("./router/invoiceRouter");
 
 // Require Modules
 const app = express();
@@ -36,6 +37,7 @@ mongoose.connect(process.env.MONGODB_CONNECTION, {useNewUrlparser: true});
 app.use("/", loginRouter); // Login Router
 app.use("/", userRouter); // User Router
 app.use("/", importRouter); // Import Router
+app.use("/", invoiceRouter); // Invoice Router
 app.use("/", logoutRouter); // Logout Router
 
 

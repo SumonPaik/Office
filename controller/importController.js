@@ -25,7 +25,7 @@ async function createImport(req, res, next) {
         creator: req.userId
      }
     await Import.create(newImport);
-    res.redirect("index")
+    res.redirect("/index")
    } catch (error) {
     next(createError(500, error))
    } 
@@ -37,7 +37,7 @@ async function viewImport(req, res, next) {
     const foundImport = await Import.findOne({_id: req.params.id}).populate("creator", "-password");
     const foundHbl = await Housebl.find({mblno: req.params.id});    
 
-    res.render("viewImport.ejs", {
+    res.render("viewImport", {
         title: foundImport.mblno,
         imports: foundImport,
         hbls: foundHbl,
@@ -48,24 +48,40 @@ async function viewImport(req, res, next) {
   }  
 };
 
+// Render Create housebl page
+async function getNewHousebl(req, res, next) {
+  try {
+   res.render("newHousebl", {
+    impId: req.params.id
+   })
+   console.log(req.params.id);
+  } catch (error) {
+   next(createError(500, error))
+  }
+};
+
 // Posting new house bl
 async function createHousebl(req, res, next) {
-    try {
-     const newHousebl = { 
-        ...req.body
-     };
-     console.log(newHousebl);
-    await Housebl.create(newHousebl);
-     res.redirect("index")
-    } catch (error) {
-     next(createError(500, error))
-    } 
- };
+  try {
+    const newHousebl = new Housebl({
+      mblno: req.params.id,
+      ...req.body,
+      creator: req.userId
+    });
+    
+    await newHousebl.save();
+    // res.redirect("import");
+    res.redirect("/" + req.params.id);
+  } catch (error) {
+    next(createError(500, error))
+  }
+};
  
 
 module.exports = {
     getImport,
     createImport,
     createHousebl,
-    viewImport
+    viewImport,
+    getNewHousebl
 };

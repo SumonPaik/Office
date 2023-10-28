@@ -1,0 +1,37 @@
+<%- include('partial/header') %>
+<div class="container">
+    
+    <form action="/import/<%= impId %>" method="post">
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; align-items: center; margin-top: 20px;">
+            <tr>
+                <label style="min-width: 100px;" for="hblno">House BL :</label>
+                <input style="max-width: 200px; padding: 4px 10px;" class="form-control" type="text" name="hblno">
+            </tr>
+            <tr>
+                <label style="min-width: 100px;" for="consignee">Consignee :</label>
+                <input style="max-width: 200px; padding: 4px 10px;" class="form-control" type="text" name="consignee">
+            </tr>
+            <tr>
+                <label style="min-width: 100px;" for="containerno">Container No. :</label>
+                <input style="max-width: 200px; padding: 4px 10px;" class="form-control" type="text" name="containerno">
+            </tr>
+        </div>
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin: 10px; align-items: center;">
+            <tr>
+                <label style="min-width: 100px;" for="containersize">Container Size :</label>
+                <input style="max-width: 200px; padding: 4px 10px;" class="form-control"  type="text" name="containersize">
+            </tr>
+            <tr>
+                <label style="min-width: 100px;" for="containerseal">Container Seal :</label>
+                <input style="max-width: 200px; padding: 4px 10px;" class="form-control"  type="text" name="containerseal">
+            </tr>
+            <tr>
+                <label style="min-width: 100px;" for="quantity">Goods Quantity :</label>
+                <input style="max-width: 200px; padding: 4px 10px;" class="form-control"  type="text" name="quantity">
+            </tr>
+        </div>
+        <button class="btn btn-success" type="submit">Insert</button>
+    </form>
+
+</div>
+<%- include('partial/footer') %>
