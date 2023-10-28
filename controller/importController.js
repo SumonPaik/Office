@@ -4,9 +4,6 @@ const Import = require("../modelSchema/importModel");
 const Housebl = require("../modelSchema/houseblModel");
 
 
-// function formatDate(today) {
-//     return today.localDateString();
-// }
 
 // Get import page function
 async function getImport(req, res, next) {
@@ -53,8 +50,7 @@ async function getNewHousebl(req, res, next) {
   try {
    res.render("newHousebl", {
     impId: req.params.id
-   })
-   console.log(req.params.id);
+   });  
   } catch (error) {
    next(createError(500, error))
   }
@@ -71,7 +67,7 @@ async function createHousebl(req, res, next) {
     
     await newHousebl.save();
     // res.redirect("import");
-    res.redirect("/" + req.params.id);
+    res.redirect("/import/" + req.params.id);
   } catch (error) {
     next(createError(500, error))
   }
