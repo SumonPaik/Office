@@ -1,0 +1,48 @@
+<%- include('partial/header') %>
+
+<div style="margin-top: 10px; padding: 0px 15%;">
+    <div class="signup login-form">
+        <form action="/user/<%= user._id %>" method="post" >
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly; align-items: center;">
+                <div style="width: 30%; padding: 5px 10px;">
+                    <div>
+                        <label id="form-label" for="username" style="font-weight: bold;">User Name</label>
+                    <input id="form-input" type="text" id="username" name="username" value="<%= user.username %>" placeholder="Enter Username.." required>
+                    </div>
+                    <div>
+                        <label id="form-label" for="email" style="font-weight: bold;">Email</label>
+                        <input id="form-input" type="email" id="email" name="email" value="<%= user.email %>" placeholder="Enter Email.." required>
+                    </div>
+                </div>
+                <div style="width: 30%; padding: 5px 10px;">
+                    <div>
+                        <label id="form-label" for="password" style="font-weight: bold;">Password</label>
+                        <input id="form-input" type="password" id="password" name="password" placeholder="Enter Password..">
+                    </div>
+                    <div>
+                        <label id="form-label" for="confirmPassword" style="font-weight: bold;">Confirm Password</label>
+                        <input id="form-input" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password..">
+                        
+                    </div> 
+                </div>                
+                <div style="width: 20%; padding: 5px 10px;">
+                    <div>
+                        <label id="form-label" for="role" style="font-weight: bold;">User Type</label>
+                        <select id="form-input" name="role" id="role">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div>
+                        <br>
+                        <button style="margin-left: 30px;" class="btn btn-warning" type="submit">Update</button>
+                    </div>
+                </div>
+            </div>     
+        </form>
+    </div>
+</div>
+
+
+
+<%- include('partial/footer') %>

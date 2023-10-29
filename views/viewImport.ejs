@@ -56,7 +56,7 @@
         </div>
         <!-- Basic info end here -->
         <div class="import-item">
-                <a class="btn btn-info" href="/import/house/<%= imports._id %>">Add New HBL</a>                
+                <a style="float: right; margin: 0 20px 10px;" class="btn btn-info" href="/import/house/<%= imports._id %>">Add New HBL</a>                
             </div>
 
         <div id="housebl-info">
@@ -101,38 +101,40 @@
                     </tbody>
                     <% }) %>
             </table>
-            <!-- <div class="invoice-info" style="display: flex;">
-                <div style="border: 1px solid blue;">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th style="width: 120px;">HBL No.</th>
-                                <th style="width: 120px;">Invoice To</th>
-                                <th style="width: 120px;">Amount</th>
-                                <th style="width: 120px;">Total Received</th>
-                                <th style="width: 120px;">Option</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="width: 120px;">bl no</td>
-                                <td style="width: 120px;">invoice to</td>
-                                <td style="width: 120px;">amount</td>
-                                <td style="width: 120px;">received amount</td>
-                                <td style="width: 120px;"><a href="#">View Invoice</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                          
+            
+            <% if (invoices.length > 0) { %>
+                <div class="invoice-info">
+                    <div>
+                        <h5 style="padding: 5px; background-color: #CCC;">Invoice Details</h5>
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Issue Date</th>
+                                    <th>House BL</th>
+                                    <th>Invoice To</th>
+                                    <th>Amount</th>
+                                    <th>Total Received</th>
+                                    <th>Option</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% invoices.forEach(invoice => { %>
+                                    <tr>
+                                        <td><%= invoice.createdAt.toDateString() %></td>
+                                        <td><%= invoice.hblno %></td>
+                                        <td><%= invoice.hbl.consignee %></td>
+                                        <td style="color: rgb(187, 2, 2);"><%= invoice.invoiceamount %></td>
+                                        <td style="color: #074107;"><%= invoice.receivedamount %></td>
+                                        <td><a class="btn btn-info" href="#invoice/<%= invoice._id %>">View Invoice</a></td>
+                                    </tr>
+                                <% }) %>
+                                
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div style="border: 1px solid red;">
-                    <table class="table">
-                        <tr>
-                            <th>Credit Note</th>
-                            <td>Amount</td>
-                        </tr>
-                    </table>
-                </div>
-            </div> -->
+            <% } else %>
         </div>
     </div>
     <!-- <script>

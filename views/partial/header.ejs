@@ -20,17 +20,22 @@
             <ul class="navul">
                 <% if (loggedInUser && loggedInUser.userId) { %>
                     <li class="navlist">
-                        <a class="navlink" href="/index">Home</a>
+                        <a class="navlink" href="/index">Index</a>
                     </li>
                     <li class="navlist">
-                        <a class="navlink" href="/import">New</a>
-                    </li>
+                        <a class="navlink" href="/import">New-Import</a>
+                    </li>                    
+                    <li class="navlist">
+                        <% if (loggedInUser.role === "admin") { %>
+                            <a class="navlink" href="/user">Manage User</a>
+                        <% } %>                        
+                    </li>                    
                     <li class="navlist">
                         <a class="navlink" href="/logout">Logout</a>
                     </li>
                     <li class="navlist">
                         <a  
-                            style= "border: 2px solid #FFF;
+                            style= "border: 2px solid #ecfc14;
                                     padding: 2px 5px;
                                     border-radius: 5px; 
                                     font-size: 1.1rem;

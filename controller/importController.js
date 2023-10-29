@@ -2,6 +2,7 @@ const createError = require("http-errors");
 const moment = require("moment");
 const Import = require("../modelSchema/importModel");
 const Housebl = require("../modelSchema/houseblModel");
+const Invoice = require("../modelSchema/invoiceModel");
 
 
 
@@ -32,12 +33,15 @@ async function createImport(req, res, next) {
 async function viewImport(req, res, next) {
   try {
     const foundImport = await Import.findOne({_id: req.params.id}).populate("creator", "-password");
-    const foundHbl = await Housebl.find({mblno: req.params.id});    
+    const foundHbl = await Housebl.find({mblno: req.params.id});
+    const foundInvoice = await Invoice.find({invoiceno: foundImport.jobno}).populate("hbl");
+    console.log(foundInvoice);
 
     res.render("viewImport", {
         title: foundImport.mblno,
         imports: foundImport,
         hbls: foundHbl,
+        invoices: foundInvoice,
         moment: moment
     });
   } catch (error) {
@@ -48,8 +52,10 @@ async function viewImport(req, res, next) {
 // Render Create housebl page
 async function getNewHousebl(req, res, next) {
   try {
+    const foundImport = await Import.findOne({_id: req.params.id});
+    console.log(foundImport);
    res.render("newHousebl", {
-    impId: req.params.id
+    imp: foundImport
    });  
   } catch (error) {
    next(createError(500, error))

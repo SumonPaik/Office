@@ -11,16 +11,15 @@
                 </div>
                 <div>
                     <label id="form-label" for="password" style="font-weight: bold;">Password</label>
-                    <input id="form-input" type="text" id="password" name="password" placeholder="Your Password.." required>
+                    <input id="form-input" type="password" id="password" name="password" placeholder="Your Password.." required>
                 </div>                
                 <p style="color: #fc2727; padding: 5px 0;">
                     <% if (error && error.length > 0)  { %>
                      <%= error %>
                     <% } %>
                 </p>
-                <button class="btn" id="login" type="submit">Log In</button>
+                <button class="btn btn-success" id="login" type="submit">Log In</button>
             </form>
-            <p style="color: blueviolet;">Don't have account? <strong><a href="/user">Signup</a></strong> here</p>
         </div>
     </div>
 

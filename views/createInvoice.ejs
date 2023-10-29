@@ -1,7 +1,7 @@
 <%- include('partial/header') %>
 
 <div class="container">
-    <form action="" method="post" style="padding: 10px;">
+    <form action="/invoice/<%= housebl._id %>" method="post" style="padding: 10px;">
         <div style="margin: 5px;">
             <label style="width: 150px;" for="invoiceno">Invoice No. : </label>
             <input style="padding: 2px 8px; border: none;" type="text" name="invoiceno" value="<%= housebl.mblno.jobno %>">
@@ -26,7 +26,7 @@
             <label style="width: 150px;" for="invoiceamount">Invoice Amount : </label>
             <input style="padding: 2px 8px;" type="number" name="invoiceamount" placeholder="Enter invoice amount">
         </div>
-        
+        <button class="btn btn-success" type="submit">Save</button>
         <!-- <div>
             <table class="table">
                 <thead>

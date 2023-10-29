@@ -1,7 +1,7 @@
 <%- include('partial/header') %>
 <div class="container">
-    
-    <form action="/import/house/<%= impId %>" method="post">
+    <h5 style="padding-left: 15px;">MBL No. : <%= imp.mblno %> , || Job No. : <%= imp.jobno %></h5>
+    <form action="/import/house/<%= imp._id %>" method="post">
         <div style="display: flex; justify-content: space-around; flex-wrap: wrap; align-items: center; margin-top: 20px;">
             <tr>
                 <label style="min-width: 100px;" for="hblno">House BL :</label>
@@ -16,7 +16,8 @@
                 <input style="max-width: 200px; padding: 4px 10px;" class="form-control" type="text" name="containerno">
             </tr>
         </div>
-        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin: 10px; align-items: center;">
+        
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin: 20px; align-items: center;">
             <tr>
                 <label style="min-width: 100px;" for="containersize">Container Size :</label>
                 <input style="max-width: 200px; padding: 4px 10px;" class="form-control"  type="text" name="containersize">
