@@ -102,7 +102,6 @@ async function updateUser(req, res, next) {
             }}, 
             {new: true}
         );
-        console.log(update, user);
         res.redirect("/user")      
     } catch (error) {
       next(error)

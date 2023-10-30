@@ -7,8 +7,10 @@ const importSchema = new mongoose.Schema({
         required: true
     },
     mblno: {
-        type: String,
-        required: true
+        type: String
+    },
+    carrier: {
+        type: String
     },
     shipper: {
         type: String,
@@ -33,6 +35,9 @@ const importSchema = new mongoose.Schema({
     portofloading: {
         type: String,
         required: true
+    },
+    igmsubmission: {
+        type: String
     },
     eta: {
         type: Date,

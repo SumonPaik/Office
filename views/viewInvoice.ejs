@@ -1,0 +1,55 @@
+<%- include('partial/header') %>
+
+<div class="container">
+    
+        <div style="margin: 5px;">
+            <td style="width: 150px;">Invoice No. : <span><%= invoice.invoiceno %></span></td>
+        </div>
+        <div style="margin: 5px;">
+            <td style="width: 150px;">Invoice To. : <span><%= invoice.invoiceto %></span></td>
+        </div>
+        <div style="margin: 5px;">
+            <td style="width: 150px;">House BL No. : <span><%= invoice.hblno %></span></td>
+        </div>
+        <div style="margin: 5px;">
+            <td style="width: 150px;">Container No. : <span><%= invoice.conno %></span></td>
+        </div>
+        <div style="margin: 5px;">
+            <td style="width: 150px;">Origin  : <span><%= invoice.origin %></span></td>
+        </div>
+        <div style="margin: 5px; display: flex; justify-content: space-around;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 80%">Description</th>
+                        <th style="width: 20%;">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= invoice.description1 %></td>
+                        <td><%= invoice.amount1 %></td>
+                    </tr>
+                    <tr>
+                        <td><%= invoice.description2 %></td>
+                        <td><%= invoice.amount2 %></td>
+                    </tr>
+                    <tr>
+                        <td><%= invoice.description2 %></td>
+                        <td><%= invoice.amount3 %></td>
+                    </tr> 
+                </tbody>
+                
+                <div>
+                    <tr>
+                        <td style="width: 85%; padding: 4px; font-weight: bold;"> Total Amount : </td>
+                        <td style="width: 20%; padding: 4px; font-weight: bold;"><%= invoice.amount1 + invoice.amount2 + invoice.amount3 %> </td>
+                    </tr>
+                </div>
+                
+            </table>
+        </div>
+    
+</div>
+
+<%- include('partial/footer') %>

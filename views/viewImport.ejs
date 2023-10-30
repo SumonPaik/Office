@@ -124,9 +124,9 @@
                                         <td><%= invoice.createdAt.toDateString() %></td>
                                         <td><%= invoice.hblno %></td>
                                         <td><%= invoice.hbl.consignee %></td>
-                                        <td style="color: rgb(187, 2, 2);"><%= invoice.invoiceamount %></td>
+                                        <td style="color: rgb(187, 2, 2);"><%= invoice.amount1 + invoice.amount2 + invoice.amount3  %></td>
                                         <td style="color: #074107;"><%= invoice.receivedamount %></td>
-                                        <td><a class="btn btn-info" href="#invoice/<%= invoice._id %>">View Invoice</a></td>
+                                        <td><a class="btn btn-info" href="/invoice/<%= invoice._id %>/view">View Invoice</a></td>
                                     </tr>
                                 <% }) %>
                                 

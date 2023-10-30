@@ -8,11 +8,14 @@ const Invoice = require("../modelSchema/invoiceModel");
 
 // Get import page function
 async function getImport(req, res, next) {
-    try {
-        res.render("createImport")   
-    } catch (error) {
-        next(createError(500, error))
-    }
+  try {
+    const today = new Date()
+    const getDate = today.toLocaleDateString();
+    console.log(getDate);
+    res.render("createImport")
+  } catch (error) {
+    next(createError(500, error))
+  }
 };
 
 // Posting new Import function
@@ -35,8 +38,6 @@ async function viewImport(req, res, next) {
     const foundImport = await Import.findOne({_id: req.params.id}).populate("creator", "-password");
     const foundHbl = await Housebl.find({mblno: req.params.id});
     const foundInvoice = await Invoice.find({invoiceno: foundImport.jobno}).populate("hbl");
-    console.log(foundInvoice);
-
     res.render("viewImport", {
         title: foundImport.mblno,
         imports: foundImport,
@@ -53,7 +54,6 @@ async function viewImport(req, res, next) {
 async function getNewHousebl(req, res, next) {
   try {
     const foundImport = await Import.findOne({_id: req.params.id});
-    console.log(foundImport);
    res.render("newHousebl", {
     imp: foundImport
    });  

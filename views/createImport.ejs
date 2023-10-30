@@ -21,7 +21,11 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="mblno">Master BL</label>
-                    <input class="form-control" type="text" name="mblno" placeholder="Enter MBL no." required>
+                    <input class="form-control" type="text" name="mblno" placeholder="Enter MBL no." >
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="carrier">Carrier</label>
+                    <input class="form-control" type="text" name="carrier" placeholder="Enter carrier name" >
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="shipper">Shipper Name</label>
@@ -32,17 +36,21 @@
                     <input class="form-control" type="text" name="agent" placeholder="Enter agnet name" required>
                 </div>               
                 <div class="mb-3">
-                    <label class="form-label" for="origin">Origin Country</label>
-                    <input class="form-control" type="text" name="origin" placeholder="Enter Country" required>
+                    <label class="form-label" for="origin">Origin</label>
+                    <input class="form-control" type="text" name="origin" placeholder="Enter Origin" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="portofloading">Loading Port</label>
-                    <input class="form-control" type="text" name="portofloading" placeholder="Enter loading port"
-                        required>
+                    <input class="form-control" type="text" name="portofloading" placeholder="Enter loading port" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="igmsubmission">IGM Date</label>
+                    <input class="form-control" type="date" name="igmsubmission" >
                 </div>
             </div>               
             <button style="margin-left: 20px;" class="btn btn-success" type="submit">Save</button>
         </form>
   </div>
 
+ 
 <%- include('partial/footer') %>
