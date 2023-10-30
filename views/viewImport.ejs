@@ -19,13 +19,14 @@
             <div class="import-item">
                 <p class="item-header">Date on Board</p>
                 <p class="item-data">
-                    <%= new Date(imports.dateonboard).toDateString() %>
+                    <%#= new Date(imports.dateonboard).toDateString() %>
+                    <%= moment(imports.dateonboard).format("DD-MMM-YY") %>                    
                 </p>
             </div>
             <div class="import-item">
                 <p class="item-header">E.T.A</p>
                 <p class="item-data">
-                    <%= new Date(imports.eta).toDateString() %>
+                    <%= moment(imports.eta).format("DD-MMM-YY") %>
                 </p>
             </div>
             <div class="import-item">
@@ -121,12 +122,12 @@
                             <tbody>
                                 <% invoices.forEach(invoice => { %>
                                     <tr>
-                                        <td><%= invoice.createdAt.toDateString() %></td>
+                                        <td><%= moment(invoice.createdAt).format("DD-MMM-YY") %></td>
                                         <td><%= invoice.hblno %></td>
                                         <td><%= invoice.hbl.consignee %></td>
-                                        <td style="color: rgb(187, 2, 2);"><%= invoice.invoiceamount %></td>
+                                        <td style="color: rgb(187, 2, 2);"><%= invoice.amount1 + invoice.amount2 + invoice.amount3  %></td>
                                         <td style="color: #074107;"><%= invoice.receivedamount %></td>
-                                        <td><a class="btn btn-info" href="#invoice/<%= invoice._id %>">View Invoice</a></td>
+                                        <td><a class="btn btn-info" href="/invoice/<%= invoice._id %>/view">View Invoice</a></td>
                                     </tr>
                                 <% }) %>
                                 

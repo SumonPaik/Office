@@ -40,7 +40,6 @@ app.use("/", importRouter); // Import Router
 app.use("/", invoiceRouter); // Invoice Router
 app.use("/", logoutRouter); // Logout Router
 
-
 // 404 - Route not found handler
 app.use(notFoundHandler);
 

@@ -22,32 +22,49 @@
             <label style="width: 150px;" for="origin">Country of Origin : </label>
             <input style="padding: 2px 8px; border: none;" type="text" name="origin" value="<%= housebl.mblno.origin %>">
         </div>
-        <div style="margin: 5px;">
-            <label style="width: 150px;" for="invoiceamount">Invoice Amount : </label>
-            <input style="padding: 2px 8px;" type="number" name="invoiceamount" placeholder="Enter invoice amount">
-        </div>
-        <button class="btn btn-success" type="submit">Save</button>
-        <!-- <div>
+        <div style="margin: 5px; display: flex; justify-content: space-around;">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Descriptions</th>
-                        <th scope="col">Amount USD</th>
-                        <th scope="col">Currency Rate</th>
-                        <th scope="col">Amount in BDT</th>
+                        <th style="width: 80%">Description</th>
+                        <th style="width: 20%;">Amount</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text"></td>
-                        <td><input type="number"></td>
-                        <td><input type="number"></td>
-                        <td><input type="number"></td>
+                        <td>
+                            <input style="width: 100%; padding: 4px;" type="text" name="description1" placeholder="Descriptions">
+                        </td>
+                        <td >
+                            <input class="amount" id="value1" style="padding: 4px;" type="number" name="amount1" placeholder="0">
+                        </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <input style="width: 100%; padding: 4px;" type="text" name="description2" placeholder="Descriptions">
+                        </td>
+                        <td>
+                            <input class="amount" id="value2" style="padding: 4px;" type="number" name="amount2" placeholder="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input style="width: 100%; padding: 4px;" type="text" name="description3" placeholder="Descriptions">
+                        </td>
+                        <td>
+                            <input class="amount" id="value3" style="padding: 4px;" type="number" name="amount3" placeholder="0">
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td style="width: 85%; border: none; padding: 4px;"> Total Amount : </td>
+                        <td style="width: 20%;">0</td>
+                    </tr> -->
                 </tbody>
             </table>
-        </div> -->
+        </div>
+        <button class="btn btn-success" type="submit">Save</button>
     </form>
+
 </div>
 
 <%- include('partial/footer') %>

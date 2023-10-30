@@ -14,12 +14,12 @@ router.get("/user", setTitle("User Management"), checkLogin, signupPage);
 router.post("/user", setTitle("User Management"), checkLogin, addNewUser);
 
 // Edit User Page render Route
-router.get("/user/:id", checkLogin, manageUser);
+router.get("/user/:id", setTitle("Update User Info"), checkLogin, manageUser);
 
 // Edit User Page render Route
-router.post("/user/:id", checkLogin, updateUser);
+router.post("/user/:id", setTitle("User Management"), checkLogin, updateUser);
 
 // Delete route for user
-router.post("/user/:id/delete", checkLogin, manageUser);
+router.post("/user/:id/delete", setTitle("User Management"), checkLogin, manageUser);
 
 module.exports = router;

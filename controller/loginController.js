@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const createError = require("http-errors");
 const People = require("../modelSchema/userModel");
 const Import = require("../modelSchema/importModel");
-const moment = require("moment");
 
 // Login Page rendering function
 function loginPage(req, res, next) {
@@ -67,8 +66,7 @@ async function indexPage(req, res, next) {
     try {
         await Import.find({}).populate("creator", "-password").then((importList)=>{
             res.render("index", {
-                importList: importList,
-                moment: moment
+                importList: importList
             })
         });        
     } catch (error) {

@@ -9,6 +9,7 @@ async function signupPage(req, res, next) {
     try {
         if (req.role === "admin") {
             const users = await People.find({});
+            // console.log(users);
             res.render("user", {
                 users: users
             });
@@ -76,7 +77,8 @@ async function manageUser(req, res, next) {
         const user = await People.findOne({_id: req.params.id});
         res.render("edituser", {
             title: "Edit User info",
-            user: user
+            user: user,
+            error: null
         });
     } else {
         if (req.body.delete === "delete") {
@@ -92,18 +94,54 @@ async function manageUser(req, res, next) {
 // Update user info
 async function updateUser(req, res, next) {
     try {
-        const update = req.body;
-        const user = await People.findOneAndUpdate(
-            {_id: req.params.id}, 
-            {$set: {
-                username: req.body.username,
-                email: req.body.email,
-                role: req.body.role
-            }}, 
-            {new: true}
-        );
-        console.log(update, user);
-        res.redirect("/user")      
+        if (req.body.password == "") {
+            await People.findOneAndUpdate(
+                {_id: req.params.id}, 
+                {$set: {
+                    username: req.body.username,
+                    email: req.body.email,
+                    role: req.body.role
+                }}, 
+                {new: true}
+            );
+            res.redirect("/user")
+        } else {
+            if (req.body.password && req.body.password === req.body.confirmPassword) {
+                bcrypt.hash(req.body.password, 10, async (err, hashedPassword)=>{
+                    if (err) {
+                        res.render("edituser", {
+                            error: err,
+                            user: {
+                                username: req.body.username,
+                                email: req.body.email
+                            }
+                        });
+                    } else {
+                        await People.findOneAndUpdate(
+                            {_id: req.params.id}, 
+                            {$set: {
+                                username: req.body.username,
+                                email: req.body.email,
+                                role: req.body.role,
+                                password: hashedPassword
+                            }}, 
+                            {new: true}
+                        );
+                        res.redirect("/user")
+                    }
+                })
+            } else {
+                res.render("edituser", {
+                    error: "Password & Confirm Password Doen't matched!",
+                    user: {
+                        username: req.body.username,
+                        email: req.body.email
+                    }
+                });
+            }
+        }
+        
+            
     } catch (error) {
       next(error)
     }  
