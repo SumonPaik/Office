@@ -2,7 +2,7 @@
 
 // Extarnal module Import
 const express = require("express");
-
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
@@ -24,7 +24,7 @@ app.set("view engine", "ejs");
 
 // Request parser
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser(process.env.COOKIE_NAME));
 
 // Set static folder

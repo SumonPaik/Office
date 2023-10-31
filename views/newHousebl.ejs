@@ -1,37 +1,42 @@
 <%- include('partial/header') %>
 <div class="container">
-    <h5 style="padding-left: 15px;">MBL No. : <%= imp.mblno %> , || Job No. : <%= imp.jobno %></h5>
+    <h5 style="padding: 10px 15px; font-size: 1rem;">MBL No. : <%= imp.mblno %> , || Job No. : <%= imp.jobno %></h5>
     <form action="/import/house/<%= imp._id %>" method="post">
-        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; align-items: center; margin-top: 20px;">
-            <tr>
-                <label style="min-width: 100px;" for="hblno">House BL :</label>
-                <input style="max-width: 200px; padding: 4px 10px;" class="form-control" type="text" name="hblno">
-            </tr>
-            <tr>
-                <label style="min-width: 100px;" for="consignee">Consignee :</label>
-                <input style="max-width: 200px; padding: 4px 10px;" class="form-control" type="text" name="consignee">
-            </tr>
-            <tr>
-                <label style="min-width: 100px;" for="containerno">Container No. :</label>
-                <input style="max-width: 200px; padding: 4px 10px;" class="form-control" type="text" name="containerno">
-            </tr>
+        <div class="row" style="margin: 10px 5px;">
+            <div class="col">
+                <label class="form-label"  for="hblno">House BL :</label>
+                <input class="form-control" type="text" name="hblno">
+            </div>
+            <div class="col">
+                <label class="form-label"  for="containerno">Container No. :</label>
+                <input class="form-control" type="text" name="containerno">
+            </div>
+            <div class="col">
+                <label class="form-label" for="containerseal">Container Seal :</label>
+                <input class="form-control"  type="text" name="containerseal">
+            </div>
+            <div class="col">
+                <label class="form-label" for="containersize">Container Size :</label>
+                <input class="form-control"  type="text" name="containersize">
+            </div>            
         </div>
         
-        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin: 20px; align-items: center;">
-            <tr>
-                <label style="min-width: 100px;" for="containersize">Container Size :</label>
-                <input style="max-width: 200px; padding: 4px 10px;" class="form-control"  type="text" name="containersize">
-            </tr>
-            <tr>
-                <label style="min-width: 100px;" for="containerseal">Container Seal :</label>
-                <input style="max-width: 200px; padding: 4px 10px;" class="form-control"  type="text" name="containerseal">
-            </tr>
-            <tr>
-                <label style="min-width: 100px;" for="quantity">Goods Quantity :</label>
-                <input style="max-width: 200px; padding: 4px 10px;" class="form-control"  type="text" name="quantity">
-            </tr>
+        <div class="row" style="margin: 10px 5px;">   
+            <div class="col-6">
+                <label class="form-label"  for="consignee">Consignee :</label>
+                <input class="form-control" type="text" name="consignee">
+            </div>
+            <div class="col-3">
+                <label class="form-label" for="quantity">Goods Quantity :</label>
+                <input class="form-control"  type="text" name="quantity">
+            </div>
+            
         </div>
-        <button class="btn btn-success" type="submit">Insert</button>
+        <div  class="row" style="margin: 20px 10px;">
+            <div class="col-2">
+                <button style="width: 100px;" class="btn btn-success" type="submit">Insert</button>
+            </div>
+        </div>
     </form>
 
 </div>
