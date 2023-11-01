@@ -1,8 +1,12 @@
 
 <%- include('partial/header') %>
     <div class="container">
-        <h5 style="padding: 5px; background-color: #CCC;">Import Details  
-            <span><a class="btn btn-info" href="/index">← Back to Index</a></span></h5>
+        <div class="row" style="justify-content: end;">
+            <div class="col-2" style="padding: 5px;">
+                <a class="btn btn-success" href="/index">← Back to Index</a>
+            </div>
+        </div>
+        <h5 style="padding: 5px; background-color: #CCC;">Import Details</h5>
         <div id="basicData">
             <div class="import-item">
                 <p class="item-header">Job No.</p>
@@ -19,7 +23,6 @@
             <div class="import-item">
                 <p class="item-header">Date on Board</p>
                 <p class="item-data">
-                    <%#= new Date(imports.dateonboard).toDateString() %>
                     <%= moment(imports.dateonboard).format("DD-MMM-YY") %>                    
                 </p>
             </div>
@@ -56,9 +59,9 @@
             
         </div>
         <!-- Basic info end here -->
-        <div class="import-item">
-                <a style="float: right; margin: 0 20px 10px;" class="btn btn-info" href="/import/house/<%= imports._id %>">Add New HBL</a>                
-            </div>
+        <div class="container-fluid row">
+                <a style="width: fit-content;" class="btn btn-warning" href="/import/house/<%= imports._id %>">Add New HBL</a>                
+        </div>
 
         <div id="housebl-info">
             <!-- <h5 style="padding: 5px; background-color: #CCC;">House BL Information</h5> -->

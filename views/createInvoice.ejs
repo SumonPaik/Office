@@ -2,25 +2,21 @@
 
 <div class="container">
     <form action="/invoice/<%= housebl._id %>" method="post" style="padding: 10px;">
-        <div style="margin: 5px;">
-            <label style="width: 150px;" for="invoiceno">Invoice No. : </label>
-            <input style="padding: 2px 8px; border: none;" type="text" name="invoiceno" value="<%= housebl.mblno.jobno %>">
-        </div>
-        <div style="margin: 5px;">
-            <label style="width: 150px;" for="invoiceto">Invoice To : </label>
-            <input style="padding: 2px 8px; border: none;" type="text" name="invoiceto" value="<%= housebl.consignee %>">
-        </div>
-        <div style="margin: 5px;">
-            <label style="width: 150px;" for="hblno">House BL No. : </label>
-            <input style="padding: 2px 8px; border: none;" type="text" name="hblno" value="<%= housebl.hblno %>">
-        </div>
-        <div style="margin: 5px;">
-            <label style="width: 150px;" for="conno">Container No. : </label>
-            <input style="padding: 2px 8px; border: none;" type="text" name="conno" value="<%= housebl.containerno %>">
-        </div>
-        <div style="margin: 5px;">
-            <label style="width: 150px;" for="origin">Country of Origin : </label>
-            <input style="padding: 2px 8px; border: none;" type="text" name="origin" value="<%= housebl.mblno.origin %>">
+        <div class="row" style="padding: 5px 30px;">            
+            <div class="col-2">
+                <p style="padding: 2px 8px;">Invoice No. </p>
+                <p style="padding: 2px 8px;"><strong>Invoice To.</strong></p>
+                <p style="padding: 2px 8px;">House BL No.</p>
+                <p style="padding: 2px 8px;">Container No.</p>
+                <p style="padding: 2px 8px;">Origin </p>
+            </div>
+            <div class="col-8">
+                <p><input style="padding: 2pxpx 8px; outline-style: none; border: 1px solid #EEE;" type="text" name="invoiceno" value="<%= housebl.mblno.jobno %>"></p>
+                <p><input style="padding: 2pxpx 8px; outline-style: none; border: 1px solid #EEE;" type="text" name="invoiceto" value="<%= housebl.consignee %>"></p>
+                <p><input style="padding: 2pxpx 8px; outline-style: none; border: 1px solid #EEE;" type="text" name="hblno" value="<%= housebl.hblno %>"></p>
+                <p><input style="padding: 2pxpx 8px; outline-style: none; border: 1px solid #EEE;" type="text" name="conno" value="<%= housebl.containerno %>"></p>
+                <p><input style="padding: 2pxpx 8px; outline-style: none; border: 1px solid #EEE;" type="text" name="origin" value="<%= housebl.mblno.origin %>"></p>
+            </div>
         </div>
         <div style="margin: 5px; display: flex; justify-content: space-around;">
             <table class="table">
@@ -33,37 +29,62 @@
                 <tbody>
                     <tr>
                         <td>
-                            <input class="form-control" type="text" name="description1" placeholder="Descriptions">
+                            <input class="form-control" type="text" name="description1" placeholder="Descriptions" value="<%= formData.description1 %>">
                         </td>
                         <td >
-                            <input class="form-control" id="value1" type="number" name="amount1" placeholder="0">
+                            <input class="form-control" id="value1" type="text" name="amount1" placeholder="0" value=0>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input class="form-control" type="text" name="description2" placeholder="Descriptions">
+                            <input class="form-control" type="text" name="description2" placeholder="Descriptions" value="<%= formData.description2 %>">
                         </td>
                         <td>
-                            <input class="form-control" id="value2" type="number" name="amount2" placeholder="0">
+                            <input class="form-control" id="value2" type="text" name="amount2" placeholder="0" value=0>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input class="form-control" type="text" name="description3" placeholder="Descriptions">
+                            <input class="form-control" type="text" name="description3" placeholder="Descriptions" value="<%= formData.description3 %>">
                         </td>
                         <td>
-                            <input class="form-control" id="value3" type="number" name="amount3" placeholder="0">
+                            <input class="form-control" id="value3" type="text" name="amount3" placeholder="0" value=0>
                         </td>
                     </tr>
-                    <!-- <tr>
-                        <td style="width: 85%; border: none; padding: 4px;"> Total Amount : </td>
-                        <td style="width: 20%;">0</td>
-                    </tr> -->
+                    <tr>
+                        <td>
+                            <p class="form-control" style="height: 36px; text-align: right; border: none;"><strong>Total Amount :</strong> </p>
+                        </td>
+                        <td>
+                            <p class="form-control" style="height: 36px;"> <strong>Tk. <span id="total">0</span></strong></p>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <button class="btn btn-success" type="submit">Save</button>
+        
+        
+        <div class="row">
+            <div class="col-4">
+                <a class="btn btn-primary" href="/import/<%= housebl.mblno._id %>">⇐ Back</a>
+                <button class="btn btn-success" type="submit">Save</button>
+            </div>  
+            <div class="col-8">
+                <% if (error && error.length > 0) { %>
+                 <h6 style="color: red;"><%= error %></h6>
+                <% } %>
+            </div>          
+        </div>
     </form>
+
+    <script>
+        document.addEventListener("keyup", (event)=>{
+            const taka = parseFloat(document.getElementById("value1").value);
+            const taka1 = parseFloat(document.getElementById("value2").value);
+            const taka2 = parseFloat(document.getElementById("value3").value); 
+            document.getElementById("total").innerHTML = taka + taka1 + taka2
+        });
+    </script>
 
 </div>
 

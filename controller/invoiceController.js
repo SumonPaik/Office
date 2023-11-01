@@ -31,15 +31,22 @@ async function newInvoice(req, res, next) {
             res.redirect("/import/" + result.hbl.mblno)
         });             
     } catch (error) {
-        next(error)
+        const foundHousebl = await Housebl.findOne({_id: req.params.hblId}).populate("mblno");
+        console.log(req.body);
+        //console.log(foundHousebl);        
+        res.render("createInvoice", {
+            housebl: foundHousebl,
+            formData: req.body,
+            error: error
+        });
     }
 };
 
 // View an invoice
 async function viewInvoice(req, res, next) {
   try {
-    const foundInvoice  = await Invoice.findOne({_id: req.params.invId});
-    //console.log(taka);
+    const foundInvoice  = await Invoice.findOne({_id: req.params.invId}).populate("hbl");
+    // console.log(foundInvoice);
     res.render("viewInvoice", {
         invoice: foundInvoice
     });

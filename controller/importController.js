@@ -49,7 +49,7 @@ async function viewImport(req, res, next) {
 async function getNewHousebl(req, res, next) {
   try {
     const foundImport = await Import.findOne({_id: req.params.id});
-   res.render("newHousebl", {
+   res.render("createHousebl", {
     imp: foundImport
    });  
   } catch (error) {
@@ -70,7 +70,11 @@ async function createHousebl(req, res, next) {
     // res.redirect("import");
     res.redirect("/import/" + req.params.id);
   } catch (error) {
-    next(createError(500, error))
+    const foundImport = await Import.findOne({_id: req.params.id});
+    res.render("createHousebl", {
+    imp: foundImport,
+    error: "You must enter the value to the field, or cancel operation."
+   });
   }
 };
  

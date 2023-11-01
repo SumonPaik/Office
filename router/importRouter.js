@@ -12,7 +12,7 @@ router.post("/import", checkLogin, createImport); // New Import Post Route
 router.get("/import/:id", setTitle("will import Id"), checkLogin, viewImport); // View a Import details by Id
 
 router.get("/import/house/:id", setTitle("Add House BL"), checkLogin, getNewHousebl); // Render Create new House BL Page
-router.post("/import/house/:id", checkLogin, createHousebl); // Post a new House BL Route
+router.post("/import/house/:id", setTitle("Add House BL"), checkLogin, createHousebl); // Post a new House BL Route
 
 
 

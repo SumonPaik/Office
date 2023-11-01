@@ -1,55 +1,82 @@
 <%- include('partial/header') %>
 
-<div class="container">
-    
-        <div style="margin: 5px;">
-            <td style="width: 150px;">Invoice No. : <span><%= invoice.invoiceno %></span></td>
+    <div class="container">
+        
+        <div class="row" style="padding: 5px 30px;">
+            
+            <div class="col-2">
+                <p>Invoice No. </p>
+                <p>Date of issue</p>
+                <p><strong>Invoice To.</strong></p>
+                <p>House BL No.</p>
+                <p>Container No.</p>
+                <p>Origin </p>
+            </div>
+            <div class="col-8">
+                <p>: <%= invoice.invoiceno %>
+                </p>
+                <p>: <%= moment(invoice.createdAt).format("DD-MMM-YYYY") %>
+                </p>
+                <p>: <strong>
+                        <%= invoice.invoiceto %>
+                    </strong></p>
+                <p>: <%= invoice.hblno %>
+                </p>
+                <p>: <%= invoice.conno %>
+                </p>
+                <p>: <%= invoice.origin %>
+                </p>
+            </div>
         </div>
-        <div style="margin: 5px;">
-            <td style="width: 150px;">Invoice To. : <span><%= invoice.invoiceto %></span></td>
-        </div>
-        <div style="margin: 5px;">
-            <td style="width: 150px;">House BL No. : <span><%= invoice.hblno %></span></td>
-        </div>
-        <div style="margin: 5px;">
-            <td style="width: 150px;">Container No. : <span><%= invoice.conno %></span></td>
-        </div>
-        <div style="margin: 5px;">
-            <td style="width: 150px;">Origin  : <span><%= invoice.origin %></span></td>
-        </div>
-        <div style="margin: 5px; display: flex; justify-content: space-around;">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th style="width: 80%">Description</th>
-                        <th style="width: 20%;">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><%= invoice.description1 %></td>
-                        <td><%= amountFormat(invoice.amount1) %></td>
-                    </tr>
-                    <tr>
-                        <td><%= invoice.description2 %></td>
-                        <td><%= amountFormat(invoice.amount2) %></td>
-                    </tr>
-                    <tr>
-                        <td><%= invoice.description2 %></td>
-                        <td><%= amountFormat(invoice.amount3) %></td>
-                    </tr> 
-                </tbody>
-                
-                <div>
-                    <tr>
-                        <td style="width: 85%; padding: 4px; font-weight: bold;"> Total Amount : </td>
-                        <td style="width: 20%; padding: 4px; font-weight: bold;"><%= amountFormat(invoice.amount1 + invoice.amount2 + invoice.amount3) %> </td>
-                    </tr>
-                </div>
-                
-            </table>
-        </div>
-    
-</div>
 
-<%- include('partial/footer') %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 80%">Description</th>
+                    <th style="width: 20%;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <%= invoice.description1 %>
+                    </td>
+                    <td>
+                        <%= amountFormat(invoice.amount1) %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= invoice.description2 %>
+                    </td>
+                    <td>
+                        <%= amountFormat(invoice.amount2) %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= invoice.description2 %>
+                    </td>
+                    <td>
+                        <%= amountFormat(invoice.amount3) %>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td style="width: 85%; padding: 4px; font-weight: bold; text-align: end; padding-right: 30px;">
+                        Total Amount : </td>
+                    <td style="width: 20%; padding: 4px; font-weight: bold;">
+                        <%= amountFormat(invoice.amount1 + invoice.amount2 + invoice.amount3) %>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="row" style="justify-content: end;">
+            <div class="col-2">
+                <a class="btn btn-primary" href="/import/<%= invoice.hbl.mblno %>">⇐ Back</a>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partial/footer') %>
