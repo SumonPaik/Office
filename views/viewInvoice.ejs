@@ -28,22 +28,22 @@
                 <tbody>
                     <tr>
                         <td><%= invoice.description1 %></td>
-                        <td><%= invoice.amount1 %></td>
+                        <td><%= amountFormat(invoice.amount1) %></td>
                     </tr>
                     <tr>
                         <td><%= invoice.description2 %></td>
-                        <td><%= invoice.amount2 %></td>
+                        <td><%= amountFormat(invoice.amount2) %></td>
                     </tr>
                     <tr>
                         <td><%= invoice.description2 %></td>
-                        <td><%= invoice.amount3 %></td>
+                        <td><%= amountFormat(invoice.amount3) %></td>
                     </tr> 
                 </tbody>
                 
                 <div>
                     <tr>
                         <td style="width: 85%; padding: 4px; font-weight: bold;"> Total Amount : </td>
-                        <td style="width: 20%; padding: 4px; font-weight: bold;"><%= invoice.amount1 + invoice.amount2 + invoice.amount3 %> </td>
+                        <td style="width: 20%; padding: 4px; font-weight: bold;"><%= amountFormat(invoice.amount1 + invoice.amount2 + invoice.amount3) %> </td>
                     </tr>
                 </div>
                 

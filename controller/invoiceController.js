@@ -39,7 +39,7 @@ async function newInvoice(req, res, next) {
 async function viewInvoice(req, res, next) {
   try {
     const foundInvoice  = await Invoice.findOne({_id: req.params.invId});
-    // console.log(foundInvoice);
+    //console.log(taka);
     res.render("viewInvoice", {
         invoice: foundInvoice
     });

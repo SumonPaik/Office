@@ -125,8 +125,8 @@
                                         <td><%= moment(invoice.createdAt).format("DD-MMM-YY") %></td>
                                         <td><%= invoice.hblno %></td>
                                         <td><%= invoice.hbl.consignee %></td>
-                                        <td style="color: rgb(187, 2, 2);"><%= invoice.amount1 + invoice.amount2 + invoice.amount3  %></td>
-                                        <td style="color: #074107;"><%= invoice.receivedamount %></td>
+                                        <td style="color: rgb(187, 2, 2);"><%= amountFormat(invoice.amount1 + invoice.amount2 + invoice.amount3)  %></td>
+                                        <td style="color: #074107;"><%= amountFormat(invoice.receivedamount) %></td>
                                         <td><a class="btn btn-info" href="/invoice/<%= invoice._id %>/view">View Invoice</a></td>
                                     </tr>
                                 <% }) %>
