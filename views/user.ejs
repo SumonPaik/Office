@@ -1,93 +1,106 @@
 <%- include('partial/header') %>
 
-<div style="margin-top: 10px; padding: 0px 15%;">
-    <div class="signup login-form">
-        <form action="/user" method="post" style="padding: 5px 10px; margin-bottom: 20px;">
-            <div class="row" >
+    <div style="margin-top: 10px; padding: 0px 15%;">
+        <div class="signup login-form">
+            <form action="/user" method="post" style="padding: 5px 10px; margin-bottom: 20px;">
+                <div class="row">
 
-            </div>
-            <div class="row" style="margin-top: 10px;">
-                <div class="col">
-                    <label for="username" style="font-weight: bold;">User Name</label>
-                    <input class="form-control" type="text" id="username" name="username" value="<%= formData.username %>"
-                        placeholder="Enter Username.." required>
                 </div>
-                <div class="col">
-                    <label for="email" style="font-weight: bold;">Email</label>
-                    <input class="form-control" type="email" id="email" name="email" value="<%= formData.email %>"
-                        placeholder="Enter Email.." required>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col">
+                        <label for="username" style="font-weight: bold;">User Name</label>
+                        <input class="form-control" type="text" id="username" name="username"
+                            value="<%= formData.username %>" placeholder="Enter Username.." required>
+                    </div>
+                    <div class="col">
+                        <label for="email" style="font-weight: bold;">Email</label>
+                        <input class="form-control" type="email" id="email" name="email" value="<%= formData.email %>"
+                            placeholder="Enter Email.." required>
+                    </div>
+                    <div class="col">
+                        <label for="password" style="font-weight: bold;">Password</label>
+                        <input class="form-control" type="password" id="password" name="password"
+                            placeholder="Enter Password.." required>
+                    </div>
+                    <div class="col">
+                        <label for="confirmPassword" style="font-weight: bold;">Confirm Password</label>
+                        <input class="form-control" type="password" id="confirmPassword" name="confirmPassword"
+                            placeholder="Confirm Password.." required>
+
+                    </div>
                 </div>
-                <div class="col">
-                    <label for="password" style="font-weight: bold;">Password</label>
-                    <input class="form-control" type="password" id="password" name="password" placeholder="Enter Password.."
-                        required>
+
+                <div class="row" style="margin-top: 10px;">
+
+                    <div class="col">
+                        <label for="role" style="font-weight: bold;">User Type</label>
+                        <select class="form-control" name="role" id="role">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="col" style="display: flex; align-items: last baseline; width: 100px;">
+                        <button style="width: 50%;" class="btn btn-success" type="submit">Create User</button>
+                    </div>
+                    <div class="col">
+                        <% if (error && error.length> 0) { %>
+                            <p style="color: #fc2727; padding-top: 20px;">
+                                <%= error %>
+                            </p>
+                            <% } %>
+                    </div>
                 </div>
-                <div class="col">
-                    <label for="confirmPassword" style="font-weight: bold;">Confirm Password</label>
-                    <input class="form-control" type="password" id="confirmPassword" name="confirmPassword"
-                        placeholder="Confirm Password.." required>
-        
-                </div>        
-            </div>
-        
-            <div class="row" style="margin-top: 10px;">
-                
-                <div class="col">
-                    <label for="role" style="font-weight: bold;">User Type</label>
-                    <select class="form-control" name="role" id="role">
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                    </select>
+
+                <div class="row" style="margin-top: 10px; line-height: 16px;">
+
                 </div>
-                <div class="col" style="display: flex; align-items: last baseline; width: 100px;">
-                    <button style="width: 50%;" class="btn btn-success" type="submit">Create User</button>
-                </div>
-                <div class="col">
-                    <% if (error && error.length> 0) { %>
-                        <p style="color: #fc2727; padding-top: 20px;">
-                            <%= error %>
-                        </p>
-                        <% } %> 
-                </div>
-            </div>
-        
-            <div class="row" style="margin-top: 10px; line-height: 16px;">
-                       
-            </div>
-        </form>
-        
-        <div>
-            <h5 style="background-color: rgb(194, 250, 231); padding: 5px 8px; margin-bottom: 0;">User Information</h5>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Created on</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>User Type</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% users.forEach(user => { %>
+            </form>
+
+            <div>
+                <h5 style="background-color: rgb(194, 250, 231); padding: 5px 8px; margin-bottom: 0;">User Information
+                </h5>
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td><%= user.createdAt.toDateString() %></td>
-                            <td><%= user.username %></td>
-                            <td><%= user.email %></td>
-                            <td><%= user.role %></td>
-                            <form action="/user/<%= user._id %>/delete" method="post">
-                                <td><button class="btn btn-warning" type="submit" name="edit" value="edit">Edit</button></td>
-                                <td><button class="btn btn-danger" type="submit" name="delete" value="delete">Delete</button></td>
-                            </form>
+                            <th>Created on</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>User Type</th>
+                            <th style="width: 220px;">Option</th>
+                            <!-- <th>Delete</th> -->
                         </tr>
-                    <% }) %>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <% users.forEach(user=> { %>
+                            <tr>
+                                <td>
+                                    <%= user.createdAt.toDateString() %>
+                                </td>
+                                <td>
+                                    <%= user.username %>
+                                </td>
+                                <td>
+                                    <%= user.email %>
+                                </td>
+                                <td>
+                                    <%= user.role %>
+                                </td>
+                                <td>
+                                    <form action="/user/<%= user._id %>/delete" method="post">
+                                        <button class="btn btn-warning" type="submit" name="edit"
+                                            value="edit">Edit</button>
+                                        <button class="btn btn-danger" type="submit" name="delete"
+                                            value="delete">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
 
 
-<%- include('partial/footer') %>
+    <%- include('partial/footer') %>

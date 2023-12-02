@@ -13,13 +13,17 @@
         </thead>
         <% importList.forEach(data => { %>
             <tbody>
-                <td><%= data.jobno %></td>
-                <td><%= data.mblno %></td>
-                <td><%= data.shipper %></td>
-                <td><%= data.agent %></td>
-                <td><%= new Date(data.dateonboard).toDateString() %></td>
-                <td><%= new Date(data.eta).toDateString() %></td>
-                <td><a class="btn btn-info" href="import/<%= data._id %>">Details</a></td>
+                <td style="padding: 6px;"><%= data.jobno %></td>
+                <td style="padding: 6px;"><%= data.mblno %></td>
+                <td style="padding: 6px;"><%= data.shipper.slice(0, 20) %>...</td>
+                <td style="padding: 6px;"><%= data.agent.slice(0, 40) %>...</td>
+                <td style="padding: 6px;"><%= moment(data.dateonboard).format("DD-MMM-YYYY") %></td>
+                <% if (data.eta - new Date() < 12) { %>
+                    <td style="padding: 6px; color: green; font-weight: bold; background-color: rgb(210, 241, 253);"><%= moment(data.eta).format("DD-MMM-YYYY") %></td>
+                <% } else { %>
+                    <td><%= moment(data.eta).format("DD-MMM-YYYY") %></td>
+                <% } %>
+                <td style="padding: 2px;"><a class="btn btn-info" style="padding: 2px;" href="import/<%= data._id %>">Details</a></td>
             </tbody>
         <% }) %>
     </table>

@@ -36,12 +36,18 @@ const importSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    destination : {
+        type: String
+    },    
     igmsubmission: {
         type: Date
     },
     eta: {
         type: Date,
         required: true
+    },
+    dodate: {
+        type: Date
     },
     creator: {
         type: mongoose.Types.ObjectId,

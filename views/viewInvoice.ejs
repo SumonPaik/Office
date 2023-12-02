@@ -1,82 +1,133 @@
 <%- include('partial/header') %>
 
-    <div class="container">
-        
-        <div class="row" style="padding: 5px 30px;">
-            
-            <div class="col-2">
-                <p>Invoice No. </p>
-                <p>Date of issue</p>
-                <p><strong>Invoice To.</strong></p>
-                <p>House BL No.</p>
-                <p>Container No.</p>
-                <p>Origin </p>
-            </div>
-            <div class="col-8">
-                <p>: <%= invoice.invoiceno %>
-                </p>
-                <p>: <%= moment(invoice.createdAt).format("DD-MMM-YYYY") %>
-                </p>
-                <p>: <strong>
-                        <%= invoice.invoiceto %>
-                    </strong></p>
-                <p>: <%= invoice.hblno %>
-                </p>
-                <p>: <%= invoice.conno %>
-                </p>
-                <p>: <%= invoice.origin %>
-                </p>
-            </div>
-        </div>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th style="width: 80%">Description</th>
-                    <th style="width: 20%;">Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <%= invoice.description1 %>
-                    </td>
-                    <td>
-                        <%= amountFormat(invoice.amount1) %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%= invoice.description2 %>
-                    </td>
-                    <td>
-                        <%= amountFormat(invoice.amount2) %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%= invoice.description2 %>
-                    </td>
-                    <td>
-                        <%= amountFormat(invoice.amount3) %>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td style="width: 85%; padding: 4px; font-weight: bold; text-align: end; padding-right: 30px;">
-                        Total Amount : </td>
-                    <td style="width: 20%; padding: 4px; font-weight: bold;">
-                        <%= amountFormat(invoice.amount1 + invoice.amount2 + invoice.amount3) %>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-        <div class="row" style="justify-content: end;">
-            <div class="col-2">
+    <div class="container" style="min-height: 100vh;">
+        <div class="row" style="justify-content: end;">            
+            <div class="col-6" style="text-align: end; margin-right: 30px;">
+                <button class="btn btn-info" type="button" onclick="printInvoice('printArea');">Print</button>
+                <a class="btn btn-primary" href="/invoice/<%= invoice._id %>/edit">Edit</a>
                 <a class="btn btn-primary" href="/import/<%= invoice.hbl.mblno %>">⇐ Back</a>
             </div>
         </div>
+        <!-- Print area start here -->
+        <div id="printArea" style="padding: 5px 30px; ">
+            <div style="padding: 0 50px; display: flex; flex-direction: column; min-height: 100vh; justify-content: space-between;">
+                <div>
+                    <div style="border-bottom: 1px solid grey; padding: 10px; margin-bottom: 10px; text-align: center;">
+                        <img style="margin-right: 5px;" src="/logo.png" alt="logo">
+                        <span style="font-size: 25px; color: red; font-weight: bold;">WATER BRIGE SHIPPING SERVICES LTD.</span>
+                        <div style="text-align: center; font-weight: 600;">Freight Invoice</div>
+                    </div>
+                    <div class="row" style="padding: 5px 20px;">
+                        <div class="col-3">
+                            <p style="line-height: 10px;">Invoice No. </p>
+                            <p style="line-height: 10px;">Date of issue</p>
+                            <p style="line-height: 10px;"><strong>Invoice To.</strong></p>
+                            <p style="line-height: 10px;">House BL No.</p>
+                            <p style="line-height: 10px;">Container No.</p>
+                            <p style="line-height: 10px;">Origin </p>
+                            <p style="line-height: 10px;">Destination </p>
+                        </div>
+                        <div class="col-8">
+                            <p style="line-height: 10px;">: <%= invoice.invoiceno %></p>
+                            <p style="line-height: 10px;">: <%= moment(invoice.createdAt).format("DD-MMM-YYYY") %></p>
+                            <p style="line-height: 10px;">: <strong><%= invoice.invoiceto %></strong></p>
+                            <p style="line-height: 10px;">: <%= invoice.hblno %></p>
+                            <p style="line-height: 10px;">: <%= invoice.conno %></p>
+                            <p style="line-height: 10px;">: <%= invoice.origin %> </p>
+                            <p style="line-height: 10px;">: <%= mbl.destination %> </p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        THIS IS TO CERTIFY THAT FREIGHT BILL FOR ABOVE CONSIGNMENT HAS BEEN CALCULATED AS FOLLOWS:
+                    </div>
+            
+                    <table class="table" style="padding: 5px 50px; border: 1px solid grey; margin-top: 5px;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid gray;">
+                                <th style="width: 80%;">DESCRIPTIONS</th>
+                                <th style="width: 20%;">AMOUNT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 5px 2px; height: 30px;"><%= invoice.description1 %></td>
+                                <td style="padding: 5px 2px; height: 30px;"><%= amountFormat(invoice.amount1) %></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 5px 2px; height: 30px;"><%= invoice.description2 %></td>
+                                <td style="padding: 5px 2px; height: 30px;"><%= amountFormat(invoice.amount2) %></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 5px 2px; height: 30px;"><%= invoice.description3 %></td>
+                                <td style="padding: 5px 2px; height: 30px;"><%= amountFormat(invoice.amount3) %></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 5px 2px; height: 30px;"><%= invoice.description4 %></td>
+                                <td style="padding: 5px 2px; height: 30px;"><%= amountFormat(invoice.amount4) %></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td style="width: 85%; padding: 4px; font-weight: bold; text-align: end; padding-right: 30px;">
+                                    Total Amount : </td>
+                                <td style="width: 20%; padding: 4px; font-weight: bold;">
+                                    <%= amountFormat(invoice.amount1 + invoice.amount2 + invoice.amount3 + invoice.amount4) %>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <p>In Word: Taka <%= numWords(invoice.amount1 + invoice.amount2 + invoice.amount3 + invoice.amount4) %> only.</p>
+                </div>
+                
+                <div style="display: flex; flex-direction: column;">
+                    <div style="margin-bottom: 30px;">
+                        <img style="height: 80px; width: 150px;" src="/signature.png" alt="signature"><br>
+                        <span style="border-top: 1px solid grey;">Authorized Signature</span>
+                    </div>
+                    <div>PLEASE ARRANGE PAYMENT IN CASH OR ISSUE PAY ORDER IN FAVOUR OF "WATER BRIDGE SHIPPING SERVICES LTD." </div>
+                    <br>
+                    <h6>Bank Details: </h6>  
+                    <div style="display: flex; gap: 10px; font-size: 12px;">                                              
+                        <p>
+                            A/C# 2809008597 <br>
+                            A/C NAME: WATER BRIDGE SHIPPING SERVICES LTD.<br>
+                            Routing: 080263612<br>
+                            BANK NAME: COMMERCIAL BANK OF CEYLON<br>
+                            PANTHAPATH BRANCH. <br>
+                        </p>
+                        <p>
+                            A/C# 107.110.0004500<br>
+                            A/C NAME: WATER BRIDGE SHIPPING SERVICES LTD.<br>
+                            Routing: 090262537<br>
+                            BANK NAME: DUTCH BANGLA BANK LTD.<br>
+                            KAWRAN BAZAR BRANCH. <br>
+                        </p>                      
+                    </div>
+                    <div style="border-top: 1px solid grey; padding: 10px; text-align: center;">
+                        128/4, (1st floor), East Tejturi Bazar, Karwan Bazar, Dhaka-1215, Bangladesh. Tel# 88-02-55012446 - 49
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Print area end here -->
+        
+        
+        
     </div>
+    
+    <script>
+        function printInvoice(elm) {
+            var header_str = '<html><head><title>' + document.title + '</title></head><body>';
+            //     console.log(header_str);
+            var footer_str = '</body></html>';
+            var new_str = document.getElementById(elm).innerHTML;
+            var old_str = document.body.innerHTML;
+            document.body.innerHTML =  new_str
+            window.print();
+            document.body.innerHTML = old_str;
+            return false;
+        }
+    </script>
 
     <%- include('partial/footer') %>

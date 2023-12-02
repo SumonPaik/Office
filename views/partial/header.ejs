@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
-    <nav>
+<body style="min-height: 100vh;">
+
+    <nav style="margin-bottom: 10px;">
         <div>
             <h2 style="color: white; font-weight: bold;">WBSL-IMPORT</h2>
         </div>
@@ -23,11 +24,14 @@
                         <a class="navlink" href="/index">Index</a>
                     </li>
                     <li class="navlist">
-                        <a class="navlink" href="/import">New-Import</a>
+                        <a class="navlink" href="/invoice">Invoices</a>
+                    </li> 
+                    <li class="navlist">
+                        <a class="navlink" href="/import">Create</a>
                     </li>                    
                     <li class="navlist">
                         <% if (loggedInUser.role === "admin") { %>
-                            <a class="navlink" href="/user">Manage User</a>
+                            <a class="navlink" href="/user">User</a>
                         <% } %>                        
                     </li>                    
                     <li class="navlist">
@@ -35,10 +39,11 @@
                     </li>
                     <li class="navlist">
                         <a  
-                            style= "border: 2px solid #ecfc14;
+                            style= "border-left: 2px solid #ecfc14;
                                     padding: 2px 5px;
-                                    border-radius: 5px; 
+                                    color: rgb(223, 223, 223);
                                     font-size: 1.1rem;
+                                    font-style: italic;
 
                                      ">
                             <%= loggedInUser.username %>

@@ -7,7 +7,8 @@ function notFoundHandler(req, res, next) {
 function defaultErrorHandler(err, req, res, next) {
     res.render("error", {
         title: "Error Page",
-        error: err
+        error: err,
+        loggedInUser: null
     });
 };
 

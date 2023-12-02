@@ -1,0 +1,38 @@
+<%- include('partial/header') %>
+
+<div style="margin-top: 10px; padding: 0px 15%;">
+   
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Invoice No.</th>
+            <th scope="col">Invoice To.</th>
+            <th scope="col">House BL No.</th>
+            <th scope="col">Date of Issue</th>
+            <th scope="col">Amount Tk.</th>
+            <th scope="col">Received</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% invoices.forEach(invoice => { %>
+            <tr>
+                <td><%= invoice.invoiceno %></td>
+                <td><%= invoice.invoiceto %></td>
+                <td><%= invoice.hblno %></td>
+                <td><%= moment(invoice.createdAt).format("DD-MMM-YY") %></td>
+                <td><%= amountFormat(invoice.amount1 + invoice.amount2 + invoice.amount3 + invoice.amount4) %></td>
+                <td>will be here</td>
+                <td><a class="btn btn-primary" href="/invoice/<%= invoice._id %>/view">View</a></td>
+            </tr>
+            
+        <% }) %>
+    </tbody>
+
+</table>
+
+
+
+</div>
+
+<%- include('partial/footer') %>

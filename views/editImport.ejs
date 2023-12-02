@@ -1,63 +1,73 @@
 <%- include('partial/header') %>
 
     <div class="container">
-        <form action="/import" method="post">
+        <form action="/import/<%= importData._id %>/edit" method="post">
             <div class="row" style="padding: 5px 5px 20px;" >
                 <div class="col">
                     <label class="form-label" for="jobno">Job Number</label>
-                    <input class="form-control" type="text" name="jobno" placeholder="Enter job no." required>
+                    <input class="form-control" type="text" name="jobno" placeholder="Enter job no." value=<%= importData.jobno %>>
                 </div>
                 <div class="col">
                     <label class="form-label" for="dateonboard">Date on Board</label>
-                    <input class="form-control" type="date" name="dateonboard" placeholder="Date on Board" required>
+                    <input class="form-control" type="date(dd-mm-yy)" name="dateonboard" placeholder="Date on Board" value=<%= moment(importData.dateonboard).format("DD-MMM-YYYY") %>>
                 </div>
                 <div class="col">
                     <label class="form-label" for="eta">ETA Date</label>
-                    <input class="form-control" type="date" name="eta" placeholder="Arrival date"  required>
+                    <input class="form-control" type="date(dd-mm-yy)" name="eta" placeholder="Arrival date"  value=<%= moment(importData.eta).format("DD-MMM-YYYY") %>>
                 </div> 
                 <div class="col">
                     <label class="form-label" for="containertype">Container Type</label>
-                    <input class="form-control" type="text" name="containertype" placeholder="Container Type" required>
+                    <input class="form-control" type="text" name="containertype" placeholder="Container Type" value=<%= importData.containertype %>>
                 </div>
             </div>
             <div class="row" style="padding: 5px 5px 20px;">
                 <div class="col">
                     <label class="form-label" for="mblno">Master BL</label>
-                    <input class="form-control" type="text" name="mblno" placeholder="Enter MBL no." >
+                    <input class="form-control" type="text" name="mblno" placeholder="Enter MBL no." value=<%= importData.mblno %>>
                 </div>
                 <div class="col">
                     <label class="form-label" for="carrier">Carrier</label>
-                    <input class="form-control" type="text" name="carrier" placeholder="Enter carrier name" >
+                    <input class="form-control" type="text" name="carrier" placeholder="Enter carrier name" value=<%= importData.carrier %> >
                 </div>
                 <div class="col">
                     <label class="form-label" for="origin">Origin</label>
-                    <input class="form-control" type="text" name="origin" placeholder="Enter Origin" required>
+                    <input class="form-control" type="text" name="origin" placeholder="Enter Origin" value=<%= importData.origin %>>
                 </div>
                 <div class="col">
                     <label class="form-label" for="portofloading">Loading Port</label>
-                    <input class="form-control" type="text" name="portofloading" placeholder="Enter loading port" required>
+                    <input class="form-control" type="text" name="portofloading" placeholder="Enter loading port" value=<%= importData.portofloading %>>
                 </div>                
             </div>
             
             <div class="row" style="padding: 5px 5px 20px;">
                 <div class="col">
                     <label class="form-label" for="shipper">Shipper Name</label>
-                    <input class="form-control" type="text" name="shipper" placeholder="Enter shipper name" required>
+                    <input class="form-control" type="text" name="shipper" placeholder="Enter shipper name" value=<%= importData.shipper %>>
                 </div>
                 <div class="col">
                     <label class="form-label" for="agent">Agent Name</label>
-                    <input class="form-control" type="text" name="agent" placeholder="Enter agnet name" required>
+                    <input class="form-control" type="text" name="agent" placeholder="Enter agnet name" value=<%= importData.agent %>>
                 </div> 
                 <div class="col-3">
-                    <label class="form-label" for="igmsubmission">IGM Date</label>
-                    <input class="form-control" type="date" name="igmsubmission" >
+                    <label class="form-label" for="igmsubmission">IGM Submission Date</label>
+                    <input class="form-control" type="date" name="igmsubmission" value=<%= moment(importData.igmsubmission).format("DD-MMM-YYYY") %>>
                 </div>
                 
-            </div>               
+            </div>     
+            <div class="row" style="padding: 5px 5px 20px;">
+                <div class="col-4">
+                    <label class="form-label" for="destination">Destination</label>
+                    <input class="form-control" type="text" name="destination" value=<%= importData.destination %>>
+                </div>  
+                <div class="col-3">
+                    <label class="form-label" for="dodate">DO Release Date</label>
+                    <input class="form-control" type="date" name="dodate" value=<%= moment(importData.dodate).format("DD-MMM-YYYY") %>>
+                </div>                
+            </div>           
             <div class="row" style="margin: 15px 5px 5px;">
                 <div class="col-6">                    
-                    <a style="width: fit-content;" class="btn btn-warning" href="/index">⇐ Back </a>
-                    <button style="width: fit-content;" class="btn btn-info" type="submit">Save</button>
+                    <a style="width: fit-content;" class="btn btn-warning" href="/import/<%= importData._id %>">⇐ Cancel </a>
+                    <button style="width: fit-content;" class="btn btn-info" type="submit">Update</button>
                 </div>
             </div>
         </form>

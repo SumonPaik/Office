@@ -6,6 +6,7 @@
 body {
     background-color: #f1f1f1;
     font-size: .8rem;
+    min-height: 100vh;
 }
 
 /* Navbar css start */
@@ -39,8 +40,8 @@ nav h1 {
     padding: 5px 10px;
 }
 .navlink:hover{
-    background-color: #236296;
-    color: #eaf820;
+    background-color: #FFF;
+    color: #236296;
 }
 
 /* Start css for Create import form */
@@ -83,6 +84,7 @@ nav h1 {
 .item-header {
     font-size: 14px;
    font-style: italic;
+   color: #3f7eb1;
 }
 
 .item-data{
@@ -97,8 +99,9 @@ nav h1 {
 }
 .login{
     width: 350px;
-    margin: 50px auto auto;
-    border: 1px solid #8fc3ff;
+    margin: 80px auto auto;
+    /* border: 1px solid #8fc3ff; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     padding: 10px 20px;
     text-align: center;
@@ -123,11 +126,11 @@ nav h1 {
 }
 .btn {
     border: 1px solid #aaa;
-    font-size: 14px;
+    font-size: 13px;
     /* color: #eee; */
-    min-width: 90px ;
-    padding: 4px 8px;
-    margin: 0 5px;
+    min-width: 80px ;
+    padding: 4px;
+    margin: 0 2px;
     border-radius: 4px;
     outline-style: none;
     transition: 0.3s;
@@ -148,7 +151,7 @@ nav h1 {
     font-family: Arial, Helvetica, sans-serif;
     width: 80%;
     margin: 0 auto 20px;
-    padding: 10px 10px 10px;
+    padding: 0px 10px 10px;
     background-color: #FFF
     
 };

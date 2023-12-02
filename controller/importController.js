@@ -28,6 +28,31 @@ async function createImport(req, res, next) {
    } 
 };
 
+// Edit Import Page Render function
+async function editImport(req, res, next) {
+  try {
+    const foundImport = await Import.findOne({_id: req.params.id});
+    res.render("editImport", {
+      importData: foundImport
+    })
+  } catch (error) {
+   next(createError(500, error))
+  } 
+};
+
+// Edit Import Save function
+async function updateImport(req, res, next) {
+  try {
+    const updateData = {
+      ...req.body
+    }
+    await Import.findOneAndUpdate({_id: req.params.id}, updateData);
+    res.redirect("/import/" + req.params.id)
+  } catch (error) {
+   next(createError(500, error))
+  } 
+};
+
 // View a import page function
 async function viewImport(req, res, next) {
   try {
@@ -67,7 +92,7 @@ async function createHousebl(req, res, next) {
     });
     
     await newHousebl.save();
-    // res.redirect("import");
+    //res.redirect("import");
     res.redirect("/import/" + req.params.id);
   } catch (error) {
     const foundImport = await Import.findOne({_id: req.params.id});
@@ -84,5 +109,7 @@ module.exports = {
     createImport,
     createHousebl,
     viewImport,
-    getNewHousebl
+    getNewHousebl,
+    editImport,
+    updateImport
 };

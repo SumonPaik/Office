@@ -51,16 +51,43 @@
                 </p>
             </div>
             <div class="import-item">
+                <p class="item-header">Destination</p>
+                <p class="item-data">
+                    <%= imports.destination %>
+                </p>
+            </div>
+            <div class="import-item">
                 <p class="item-header">Port of Loading</p>
                 <p class="item-data">
                     <%= imports.portofloading %>
                 </p>
             </div>
+            <div class="import-item">
+                <p class="item-header">Igm Submission Date</p>
+                <% if (!imports.igmsubmission) { %>
+                    <p class="item-data" style="color: red;">IGM Not Submitted</p>
+                <% } else { %>
+                    <p class="item-data">
+                        <%= moment(imports.igmsubmission).format("DD-MMM-YYYY") %>
+                    </p>
+                <% } %>
+            </div>
+            <div class="import-item">
+                <p class="item-header">DO Release Date</p>
+                <% if (!imports.dodate) { %>
+                 <p class="item-data" style="color: red;">D/O not released</p>
+                <% } else { %>
+                <p class="item-data">
+                    <%= moment(imports.dodate).format("DD-MMM-YYYY") %>                   
+                </p>
+                <% } %>
+            </div>
             
         </div>
         <!-- Basic info end here -->
         <div class="container-fluid row">
-                <a style="width: fit-content;" class="btn btn-warning" href="/import/house/<%= imports._id %>">Add New HBL</a>                
+            <a style="width: fit-content;" class="btn btn-primary" href="/import/<%= imports._id %>/edit">Modify</a> 
+            <a style="width: fit-content;" class="btn btn-warning" href="/import/house/<%= imports._id %>">Add New HBL</a>                
         </div>
 
         <div id="housebl-info">

@@ -26,6 +26,8 @@
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.29.4",
-    "mongoose": "^7.5.2"
+    "mongoose": "^7.5.2",
+    "num-words": "^1.2.3",
+    "number-to-words-converter": "^1.0.0"
   }
 }
